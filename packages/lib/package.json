@@ -12,5 +12,12 @@
     "form"
   ],
   "author": "JohnsonHuang4396",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "sass": "^1.64.0",
+    "typescript": "^4.9.5"
+  }
 }
