@@ -1,0 +1,23 @@
+{
+  "name": "@vue3-form/core",
+  "version": "1.0.0",
+  "description": "A data-drive form base on Vue3 and Element Plus",
+  "main": "",
+  "scripts": {},
+  "keywords": [
+    "vue",
+    "vuejs",
+    "Vue3",
+    "Element Plus",
+    "form"
+  ],
+  "author": "JohnsonHuang4396",
+  "license": "MIT",
+  "dependencies": {
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "sass": "^1.64.0",
+    "typescript": "^4.9.5"
+  }
+}
