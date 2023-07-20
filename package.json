@@ -1,0 +1,41 @@
+{
+  "name": "vue3-form",
+  "version": "0.0.0",
+  "description": "A data-drive form base on Vue3 and Element Plus",
+  "main": "",
+  "scripts": {
+    "preinstall": "npx husky install",
+    "commitmsg": "commitlint -E HUSKY_GIT_PARAMS"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "pnpm": "latest",
+  "keywords": [
+    "vue",
+    "vuejs",
+    "Vue3",
+    "Element Plus",
+    "form"
+  ],
+  "author": "JohnsonHuang4396",
+  "license": "MIT",
+  "files": [
+    "dist/*.js",
+    "types/*.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "https://github.com/JohnsonHuang4396/vue3-form",
+  "homepage": "https://github.com/JohnsonHuang4396/vue3-form",
+  "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.0"
+  }
+}

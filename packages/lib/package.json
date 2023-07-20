@@ -1,0 +1,16 @@
+{
+  "name": "@johnsonhuang4396/vue3-form-core",
+  "version": "0.0.0",
+  "description": "A data-drive form base on Vue3 and Element Plus",
+  "main": "",
+  "scripts": {},
+  "keywords": [
+    "vue",
+    "vuejs",
+    "Vue3",
+    "Element Plus",
+    "form"
+  ],
+  "author": "JohnsonHuang4396",
+  "license": "MIT"
+}
