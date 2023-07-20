@@ -1,15 +1,19 @@
 {
-  "name": "docs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "vue3-form-doc",
+  "version": "0.0.0",
+  "description": "Handbook for vue3-form",
+  "main": "index.ts",
   "scripts": {
     "docs:dev": "vitepress dev .",
     "docs:build": "vitepress build .",
     "docs:preview": "vitepress preview ."
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "vitepress",
+    "vuejs",
+    "form"
+  ],
+  "author": "JohnsonHuang4396",
   "license": "ISC",
   "devDependencies": {
     "vitepress": "1.0.0-beta.5",
