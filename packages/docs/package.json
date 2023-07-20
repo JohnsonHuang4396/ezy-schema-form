@@ -1,6 +1,6 @@
 {
   "name": "@vue3-form/doc",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Handbook for vue3-form",
   "main": "index.ts",
   "scripts": {
