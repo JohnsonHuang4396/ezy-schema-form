@@ -2,3 +2,4 @@
 .husky/*
 .changeset
 node_modules
+packages/docs/.vitepress/cache
