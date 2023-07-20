@@ -1,5 +1,4 @@
-.husky
-.husky/*
+.husky/_
 .changeset
 node_modules
 packages/docs/.vitepress/cache
