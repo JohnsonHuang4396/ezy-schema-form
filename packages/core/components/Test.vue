@@ -1,5 +1,10 @@
 <template>
-  <button class="test-btn">test</button>
+  <el-button
+    type="primary"
+    size="default"
+  >
+    test
+  </el-button>
 </template>
 
 <script lang="ts" setup>

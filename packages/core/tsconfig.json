@@ -5,7 +5,6 @@
     "module": "ESNext" /* Specify what module code is generated. */,
     "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
     "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
-    "lib": ["ESNext", "DOM"],
     "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
     "isolatedModules": false /* Ensure that each file can be safely transpiled without relying on other imports. */,
     "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
@@ -16,7 +15,8 @@
     "noImplicitThis": true /* Enable error reporting when 'this' is given the type 'any'. */,
     "useUnknownInCatchVariables": true /* Default catch clause variables as 'unknown' instead of 'any'. */,
     "noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "lib": ["ESNext", "DOM"]
   },
   "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue"]
 }
