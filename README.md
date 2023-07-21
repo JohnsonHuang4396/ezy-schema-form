@@ -2,6 +2,12 @@
 
 > A data-drive form base on Vue3 and Element Plus
 
+## Commit Step
+
+1. `pnpm changeset` Create a changeset log
+2. `pnpm ac` Consume changeset log and output CHANGELOG
+3. Push commits to GitHub
+
 ## Commit Lint
 
 - build: Build Change
