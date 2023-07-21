@@ -1,5 +1,8 @@
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
@@ -9,6 +12,12 @@ export default defineConfig({
       entryRoot: './packages/lib',
       outDir: ['./packages/lib/dist/es', './packages/lib/dist/lib'],
       tsconfigPath: './packages/lib/tsconfig.json'
+    }),
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
     })
   ],
   build: {
