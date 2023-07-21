@@ -5,9 +5,9 @@
   "main": "",
   "scripts": {
     "build": "vite build",
+    "ac": "node ./scripts/auto-commit.js",
     "changeset": "changeset",
     "update:version": "changeset version",
-    "release": "changeset publish",
     "preinstall": "npx husky install"
   },
   "pnpm": "latest",
