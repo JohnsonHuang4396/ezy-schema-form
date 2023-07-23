@@ -1,9 +1,13 @@
 {
   "name": "@vue3-form/core",
-  "version": "0.0.2",
+  "version": "2.0.1",
   "description": "A data-drive form base on Vue3 and Element Plus",
-  "main": "",
+  "main": "/dist/lib/index.cjs",
+  "module": "/dist/es/index.mjs",
   "scripts": {},
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "vue",
     "vuejs",

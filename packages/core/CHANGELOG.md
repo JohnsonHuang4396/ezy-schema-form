@@ -1,5 +1,11 @@
 # @vue3-form/core
 
+## 2.0.1
+
+### Patch Changes
+
+- change production dir
+
 ## 0.0.2
 
 ### Patch Changes
