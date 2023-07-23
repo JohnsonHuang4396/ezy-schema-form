@@ -5,7 +5,8 @@
   "description": "A data-drive form base on Vue3 and Element Plus",
   "scripts": {
     "build": "vite build",
-    "build:core": "gulp -f ./scripts/remove-dist.js",
+    "build:core": "gulp -f ./scripts/rebuild-dist.js",
+    "remove-dist": "node ./scripts/remove-dist.js",
     "ac": "node ./scripts/auto-commit.js",
     "changeset": "changeset",
     "update:version": "changeset version",

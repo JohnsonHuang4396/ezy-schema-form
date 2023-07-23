@@ -20,10 +20,27 @@ export default defineConfig({
       outDir: ['./packages/core/dist/es'],
       tsconfigPath: './tsconfig.json'
     }),
-    ElementPlus({ useSource: true })
+    ElementPlus({ useSource: true }),
+    {
+      name: 'style',
+      generateBundle(config, bundle) {
+        //这里可以获取打包后的文件目录以及代码code
+        const keys = Object.keys(bundle)
+
+        for (const key of keys) {
+          const bundler: any = bundle[key as any]
+          this.emitFile({
+            type: 'asset',
+            fileName: key, //文件名名不变
+            source: bundler.code.replace(/\.scss/g, '.css')
+          })
+        }
+      }
+    }
   ],
   build: {
     outDir: '/',
+    cssCodeSplit: true,
     rollupOptions: {
       external: ['vue', /\.scss/],
       input: ['./packages/core/index.ts'],
@@ -34,14 +51,14 @@ export default defineConfig({
           preserveModules: true,
           exports: 'named',
           dir: './packages/core/dist/es'
+        },
+        {
+          format: 'cjs',
+          entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
+          preserveModules: true,
+          exports: 'named',
+          dir: './packages/core/dist/lib'
         }
-        // {
-        //   format: 'cjs',
-        //   entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
-        //   preserveModules: true,
-        //   exports: 'named',
-        //   dir: './packages/core/dist/lib'
-        // }
       ]
     },
     lib: {
