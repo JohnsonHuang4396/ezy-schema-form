@@ -1,15 +1,11 @@
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import path from 'path'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
 import { defineConfig } from 'vite'
 
 const CORE_PATH = 'packages/core/'
 
 function formatEntryFileNames(name: string, extendName: 'mjs' | 'cjs') {
-  console.log('name :>>', name)
   if (name.startsWith('')) {
     return `${name.replace(CORE_PATH, '')}.${extendName}`
   }
@@ -21,16 +17,15 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: './packages/core',
-      outDir: ['./packages/core/dist/es', './packages/core/dist/lib'],
+      outDir: ['./packages/core/dist/es'],
       tsconfigPath: './tsconfig.json'
     }),
-    AutoImport({ resolvers: [ElementPlusResolver()] }),
-    Components({ resolvers: [ElementPlusResolver()] })
+    ElementPlus({ useSource: true })
   ],
   build: {
     outDir: '/',
     rollupOptions: {
-      external: ['vue'],
+      external: ['vue', /\.scss/],
       input: ['./packages/core/index.ts'],
       output: [
         {
@@ -39,14 +34,14 @@ export default defineConfig({
           preserveModules: true,
           exports: 'named',
           dir: './packages/core/dist/es'
-        },
-        {
-          format: 'cjs',
-          entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
-          preserveModules: true,
-          exports: 'named',
-          dir: './packages/core/dist/lib'
         }
+        // {
+        //   format: 'cjs',
+        //   entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
+        //   preserveModules: true,
+        //   exports: 'named',
+        //   dir: './packages/core/dist/lib'
+        // }
       ]
     },
     lib: {

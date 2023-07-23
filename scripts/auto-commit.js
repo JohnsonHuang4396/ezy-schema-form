@@ -1,7 +1,3 @@
-// TODO: 将changesets的version功能以及git commit集成到auto-commit中，当执行完changesets version后继续执行auto-commit中的选择commit功能
-// TODO: 选择commit功能仅包含目前暂存区中packages下的包，而不包含公共文件
-// TODO: 允许执行-f [package name]命令跳过包选择阶段，直接进入填写commit message阶段
-
 const readline = require('readline')
 const { execSync } = require('child_process')
 
