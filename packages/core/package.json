@@ -1,6 +1,6 @@
 {
   "name": "@vue3-form/core",
-  "version": "3.0.0",
+  "version": "0.0.2",
   "description": "A data-drive form base on Vue3 and Element Plus",
   "main": "",
   "scripts": {},

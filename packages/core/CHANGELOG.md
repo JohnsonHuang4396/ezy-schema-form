@@ -1,13 +1,13 @@
 # @vue3-form/core
 
-## 3.0.0
+## 0.0.2
 
-### Major Changes
+### Patch Changes
 
 - add element-plus
 
-## 1.0.0
+## 0.0.1
 
-### Major Changes
+### Patch Changes
 
 - init core package
