@@ -1,5 +1,7 @@
 <template>
+  <div class="test-btn">test div</div>
   <el-button
+    class="test-btn"
     type="primary"
     size="default"
   >
@@ -8,16 +10,13 @@
 </template>
 
 <script lang="ts" setup>
-  import { useTest } from '../hooks/useTest'
+  import { ElButton } from 'element-plus'
+  import { useTest } from '../../hooks/useTest'
 
   const { name } = useTest()
   console.log('name :>>', name)
 </script>
 
 <style lang="scss" scoped>
-  .test-btn {
-    background-color: blanchedalmond;
-    color: #ffffff;
-    outline: none;
-  }
+  @import url('./index.scss');
 </style>

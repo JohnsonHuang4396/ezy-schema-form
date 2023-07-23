@@ -1,3 +1,3 @@
-import Test from './components/Test.vue'
+import Test from './components/Test/index.vue'
 
-export default { Test }
+export default Test
