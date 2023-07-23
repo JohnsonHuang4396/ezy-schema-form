@@ -13,10 +13,8 @@
   import { ElButton } from 'element-plus'
   import { useTest } from '../../hooks/useTest'
 
+  import './style/index.scss'
+
   const { name } = useTest()
   console.log('name :>>', name)
 </script>
-
-<style lang="scss" scoped>
-  @import url('./index.scss');
-</style>

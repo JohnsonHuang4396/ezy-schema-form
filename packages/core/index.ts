@@ -1,3 +1,1 @@
-import Test from './components/Test/index.vue'
-
-export default Test
+export * as Test from './components/Test'
