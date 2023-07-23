@@ -9,42 +9,38 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      entryRoot: './packages/lib',
-      outDir: ['./packages/lib/dist/es', './packages/lib/dist/lib'],
-      tsconfigPath: './packages/lib/tsconfig.json'
+      entryRoot: './packages/core',
+      outDir: ['./packages/core/dist/es', './packages/core/dist/core'],
+      tsconfigPath: './packages/core/tsconfig.json'
     }),
-    AutoImport({
-      resolvers: [ElementPlusResolver()]
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()]
-    })
+    AutoImport({ resolvers: [ElementPlusResolver()] }),
+    Components({ resolvers: [ElementPlusResolver()] })
   ],
   build: {
-    outDir: './packages/lib',
+    outDir: './packages/core',
     minify: false,
     rollupOptions: {
       external: ['vue'],
-      input: ['./packages/lib/index.ts'],
+      input: ['./packages/core/index.ts'],
       output: [
         {
           format: 'es',
           entryFileNames: '[name].mjs',
           preserveModules: true,
           exports: 'named',
-          dir: './packages/lib/dist/es'
+          dir: './packages/core/dist/es'
         },
         {
           format: 'cjs',
           entryFileNames: '[name].js',
           preserveModules: true,
           exports: 'named',
-          dir: './packages/lib/dist/lib'
+          dir: './packages/core/dist/lib'
         }
       ]
     },
     lib: {
-      entry: './packages/lib/index.ts'
+      entry: './packages/core/index.ts'
     }
   }
 })
