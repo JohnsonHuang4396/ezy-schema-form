@@ -1,5 +1,5 @@
-const readline = require('readline')
-const { execSync } = require('child_process')
+import readline from 'readline'
+import { execSync } from 'child_process'
 
 function getVersion() {
   try {
