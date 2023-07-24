@@ -1,5 +1,11 @@
 # @vue3-form/core
 
+## 2.0.2
+
+### Patch Changes
+
+- complete lib building
+
 ## 2.0.1
 
 ### Patch Changes
