@@ -56,7 +56,7 @@ export const delPath = async path => {
 
 async function buildStyle() {
   return gulp
-    .src(`${componentsPath}/**/style/**.scss`)
+    .src(`${pkgPath}/components/**/style/**.scss`)
     .pipe(sass())
     .pipe(autoPrefixer())
     .pipe(gulp.dest(`${pkgPath}/dist/es/components`))

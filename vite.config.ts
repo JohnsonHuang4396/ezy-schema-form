@@ -20,7 +20,7 @@ export default defineConfig({
       outDir: ['./packages/core/dist/es', './packages/core/dist/lib'],
       tsconfigPath: './tsconfig.json'
     }),
-    ElementPlus({ useSource: true }),
+    ElementPlus({}),
     {
       name: 'style',
       generateBundle(config, bundle) {
@@ -32,7 +32,9 @@ export default defineConfig({
           this.emitFile({
             type: 'asset',
             fileName: key, //文件名名不变
-            source: bundler.code.replace(/\.scss/g, '.css')
+            source: bundler.code
+              .replace(/\.scss/g, '.css')
+              .replace('../packages/core/components/', '')
           })
         }
       }
@@ -40,7 +42,6 @@ export default defineConfig({
   ],
   build: {
     outDir: '/',
-    cssCodeSplit: true,
     rollupOptions: {
       external: ['vue', /\.scss/],
       input: ['./packages/core/index.ts'],
