@@ -1,6 +1,4 @@
-<script setup lang="ts">
-  import Test from '@vue3-form/core'
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <Test />
