@@ -17,7 +17,7 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: './packages/core',
-      outDir: ['./packages/core/dist/es'],
+      outDir: ['./packages/core/dist/es', './packages/core/dist/lib'],
       tsconfigPath: './tsconfig.json'
     }),
     ElementPlus({ useSource: true }),

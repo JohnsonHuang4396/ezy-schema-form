@@ -59,17 +59,16 @@ async function buildStyle() {
     .src(`${componentsPath}/**/style/**.scss`)
     .pipe(sass())
     .pipe(autoPrefixer())
-    .pipe(gulp.dest(`${pkgPath}/dist/es`))
+    .pipe(gulp.dest(`${pkgPath}/dist/es/components`))
+    .pipe(gulp.dest(`${pkgPath}/dist/lib/components`))
 }
 
 async function buildComponents() {
-  run('pnpm -w run build', componentsPath)
+  await run('pnpm -w run build', pkgPath)
+  await buildStyle()
 }
 
 export default gulp.series(
   async () => delPath(`${pkgPath}/dist`),
-  gulp.parallel(
-    async () => buildStyle(),
-    async () => buildComponents()
-  )
+  async () => buildComponents()
 )
