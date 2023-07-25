@@ -21,10 +21,8 @@
     "vue": "*"
   },
   "devDependencies": {
+    "element-plus": "^2.3.8",
     "sass": "*",
     "typescript": "*"
-  },
-  "peerDependencies": {
-    "element-plus": "^2.3.8"
   }
 }

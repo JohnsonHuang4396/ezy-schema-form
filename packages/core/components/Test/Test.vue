@@ -1,7 +1,6 @@
 <template>
   <div class="test-btn">test div</div>
   <el-button
-    class="test-btn"
     type="primary"
     size="default"
   >

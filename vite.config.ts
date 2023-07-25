@@ -1,6 +1,6 @@
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
-import ElementPlus from 'unplugin-element-plus/vite'
+import vitePluginImp from 'vite-plugin-imp'
 import { defineConfig } from 'vite'
 
 const CORE_PATH = 'packages/core/'
@@ -20,7 +20,21 @@ export default defineConfig({
       outDir: ['./packages/core/dist/es', './packages/core/dist/lib'],
       tsconfigPath: './tsconfig.json'
     }),
-    ElementPlus({}),
+    vitePluginImp({
+      libList: [
+        {
+          libName: 'element-plus',
+          libDirectory: 'es/components',
+          nameFormatter: (name: string) => {
+            return `${name.replace('el-', '')}/index.mjs`
+          },
+          style(name) {
+            // return `element-plus/theme-chalk/${name}.css`
+            return `element-plus/es/components/${name.replace('el-', '')}/style/css.mjs`
+          }
+        }
+      ]
+    }),
     {
       name: 'style',
       generateBundle(config, bundle) {
