@@ -17,12 +17,11 @@ export const pkgPath = resolve(__dirname, '../packages/core')
 const stayFile = ['package.json', 'README.md']
 
 function run(command, path) {
-  //cmd表示命令，args代表参数，如 rm -rf  rm就是命令，-rf就为参数
   const [cmd, ...args] = command.split(' ')
   return new Promise((resolve, reject) => {
     const app = spawn(cmd, args, {
-      cwd: path, //执行命令的路径
-      stdio: 'inherit', //输出共享给父进程
+      cwd: path,
+      stdio: 'inherit',
       shell: true //mac不需要开启，windows下git base需要开启支持
     })
     //执行完毕关闭并resolve
@@ -64,7 +63,8 @@ async function buildStyle() {
 }
 
 async function buildComponents() {
-  await run('pnpm -w run build', pkgPath)
+  const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
+  await run(`${cmd} -w run build`, pkgPath)
   await buildStyle()
 }
 
