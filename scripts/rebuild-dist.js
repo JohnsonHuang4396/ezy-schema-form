@@ -49,7 +49,7 @@ export const delPath = async path => {
       }
     })
 
-    if (path !== `${pkgPath}/dist`) fs.rmdirSync(path)
+    if (path !== `${pkgPath}/es` || path !== `${pkgPath}/lib`) fs.rmdirSync(path)
   }
 }
 
@@ -58,8 +58,8 @@ async function buildStyle() {
     .src(`${pkgPath}/components/**/style/**.scss`)
     .pipe(sass())
     .pipe(autoPrefixer())
-    .pipe(gulp.dest(`${pkgPath}/dist/es/components`))
-    .pipe(gulp.dest(`${pkgPath}/dist/lib/components`))
+    .pipe(gulp.dest(`${pkgPath}/es/components`))
+    .pipe(gulp.dest(`${pkgPath}/lib/components`))
 }
 
 async function buildComponents() {
@@ -68,6 +68,7 @@ async function buildComponents() {
 }
 
 export default gulp.series(
-  async () => delPath(`${pkgPath}/dist`),
+  async () => delPath(`${pkgPath}/es`),
+  async () => delPath(`${pkgPath}/lib`),
   async () => buildComponents()
 )

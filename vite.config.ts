@@ -17,7 +17,7 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: './packages/core',
-      outDir: ['./packages/core/dist/es', './packages/core/dist/lib'],
+      outDir: ['./packages/core/es', './packages/core/lib'],
       tsconfigPath: './tsconfig.json'
     }),
     vitePluginImp({
@@ -57,7 +57,7 @@ export default defineConfig({
   build: {
     outDir: '/',
     rollupOptions: {
-      external: ['vue', /\.scss/],
+      external: ['vue', 'element-plus', /\.scss/],
       input: ['./packages/core/index.ts'],
       output: [
         {
@@ -65,14 +65,14 @@ export default defineConfig({
           entryFileNames: ({ name }) => formatEntryFileNames(name, 'mjs'),
           preserveModules: true,
           exports: 'named',
-          dir: './packages/core/dist/es'
+          dir: './packages/core/es'
         },
         {
           format: 'cjs',
           entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
           preserveModules: true,
           exports: 'named',
-          dir: './packages/core/dist/lib'
+          dir: './packages/core/lib'
         }
       ]
     },

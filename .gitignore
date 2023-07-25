@@ -1,6 +1,7 @@
 .husky/_
 node_modules
-dist
+es
+lib
 packages/docs/.vitepress/cache
 
 auto-imports.d.ts
