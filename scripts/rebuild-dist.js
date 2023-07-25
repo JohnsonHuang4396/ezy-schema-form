@@ -63,8 +63,7 @@ async function buildStyle() {
 }
 
 async function buildComponents() {
-  const cmd = process.platform === 'win32' ? 'npm.cmd' : 'npm'
-  await run(`${cmd} -w run build`, pkgPath)
+  await run(`pnpm -w build`, pkgPath)
   await buildStyle()
 }
 
