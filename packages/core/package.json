@@ -18,11 +18,13 @@
   "author": "JohnsonHuang4396",
   "license": "MIT",
   "dependencies": {
-    "vue": "*",
-    "element-plus": "*"
+    "vue": "*"
   },
   "devDependencies": {
     "sass": "*",
     "typescript": "*"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.3.8"
   }
 }
