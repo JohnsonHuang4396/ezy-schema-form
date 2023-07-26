@@ -35,7 +35,7 @@ export const delPath = async path => {
   if (fs.existsSync(path)) {
     files = fs.readdirSync(path)
 
-    files.forEach(async file => {
+    for (const file of files) {
       let curPath = resolve(path, file)
 
       if (fs.statSync(curPath).isDirectory()) {
@@ -47,7 +47,7 @@ export const delPath = async path => {
           fs.unlinkSync(curPath)
         }
       }
-    })
+    }
 
     if (path !== `${pkgPath}/es` || path !== `${pkgPath}/lib`) fs.rmdirSync(path)
   }
@@ -63,7 +63,7 @@ async function buildStyle() {
 }
 
 async function buildComponents() {
-  await run(`pnpm -w build`, pkgPath)
+  // await run(`pnpm -w build`, pkgPath)
   await buildStyle()
 }
 

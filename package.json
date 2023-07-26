@@ -5,7 +5,7 @@
   "description": "A data-drive form base on Vue3 and Element Plus",
   "scripts": {
     "build": "vite build",
-    "build:core": "gulp -f ./scripts/rebuild-dist.js",
+    "build:core": "gulp -f ./scripts/rebuild-dist.js & pnpm build",
     "remove-dist": "node ./scripts/remove-dist.js",
     "ac": "node ./scripts/auto-commit.js",
     "changeset": "changeset",
@@ -53,7 +53,6 @@
     "vite-plugin-imp": "^2.4.0"
   },
   "dependencies": {
-    "element-plus": "^2.3.8",
     "vue": "^3.3.4"
   }
 }

@@ -29,7 +29,6 @@ export default defineConfig({
             return `${name.replace('el-', '')}/index.mjs`
           },
           style(name) {
-            // return `element-plus/theme-chalk/${name}.css`
             return `element-plus/es/components/${name.replace('el-', '')}/style/css.mjs`
           }
         }
