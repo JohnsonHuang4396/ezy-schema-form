@@ -48,9 +48,8 @@ export const delPath = async path => {
         }
       }
     }
-
-    if (path !== `${pkgPath}/es` || path !== `${pkgPath}/lib`) fs.rmdirSync(path)
   }
+  if (path !== `${pkgPath}/es` || path !== `${pkgPath}/lib`) fs.rmdirSync(path)
 }
 
 async function buildStyle() {
@@ -63,7 +62,7 @@ async function buildStyle() {
 }
 
 async function buildComponents() {
-  // await run(`pnpm -w build`, pkgPath)
+  await run(`pnpm -w build`, pkgPath)
   await buildStyle()
 }
 

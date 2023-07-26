@@ -29,9 +29,19 @@ export default defineConfig({
             return `${name.replace('el-', '')}/index.mjs`
           },
           style(name) {
-            return `element-plus/es/components/${name.replace('el-', '')}/style/css.mjs`
+            return `element-plus/es/components/${name.replace('el-', '')}/style/index.mjs`
           }
         }
+        // {
+        //   libName: 'element-plus',
+        //   libDirectory: 'lib/components',
+        //   nameFormatter: (name: string) => {
+        //     return `${name.replace('el-', '')}/index.cjs`
+        //   },
+        //   style(name) {
+        //     return `element-plus/lib/components/${name.replace('el-', '')}/style/css.js`
+        //   }
+        // }
       ]
     }),
     {
@@ -42,12 +52,13 @@ export default defineConfig({
 
         for (const key of keys) {
           const bundler: any = bundle[key as any]
+
           this.emitFile({
             type: 'asset',
             fileName: key, //文件名名不变
             source: bundler.code
-              .replace(/\.scss/g, '.css')
-              .replace('../packages/core/components/', '')
+            // ?.replace(/\.scss/g, '.css')
+            // ?.replace('../packages/core/components/', '')
           })
         }
       }
@@ -55,8 +66,9 @@ export default defineConfig({
   ],
   build: {
     outDir: '/',
+    cssCodeSplit: true,
     rollupOptions: {
-      external: ['vue', 'element-plus', /\.scss/],
+      external: ['element-plus', 'vue'],
       input: ['./packages/core/index.ts'],
       output: [
         {
@@ -64,14 +76,22 @@ export default defineConfig({
           entryFileNames: ({ name }) => formatEntryFileNames(name, 'mjs'),
           preserveModules: true,
           exports: 'named',
-          dir: './packages/core/es'
+          dir: './packages/core/es',
+          globals: {
+            vue: 'vue',
+            'element-plus': 'element-plus'
+          }
         },
         {
           format: 'cjs',
           entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
           preserveModules: true,
           exports: 'named',
-          dir: './packages/core/lib'
+          dir: './packages/core/lib',
+          globals: {
+            vue: 'vue',
+            'element-plus': 'element-plus'
+          }
         }
       ]
     },
