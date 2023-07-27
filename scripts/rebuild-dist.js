@@ -16,7 +16,7 @@ export const pkgPath = resolve(__dirname, '../packages/core')
 
 const stayFile = ['package.json', 'README.md']
 
-function run(command, path) {
+export function run(command, path) {
   const [cmd, ...args] = command.split(' ')
   return new Promise((resolve, reject) => {
     const app = spawn(cmd, args, {
@@ -48,7 +48,7 @@ export const delPath = async path => {
         }
       }
     }
-  }
+  } else return
   if (path !== `${pkgPath}/es` || path !== `${pkgPath}/lib`) fs.rmdirSync(path)
 }
 

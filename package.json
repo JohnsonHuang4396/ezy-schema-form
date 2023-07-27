@@ -6,7 +6,9 @@
   "scripts": {
     "build": "vite build",
     "build:core": "gulp -f ./scripts/rebuild-dist.js & pnpm build",
+    "rebuild:es": "pnpm remove-dist & pnpm build & pnpm insert-style",
     "remove-dist": "node ./scripts/remove-dist.js",
+    "insert-style": "node ./scripts/insert-style.js",
     "ac": "node ./scripts/auto-commit.js",
     "changeset": "changeset",
     "update:version": "changeset version",

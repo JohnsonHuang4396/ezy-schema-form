@@ -5,7 +5,7 @@ import { defineConfig } from 'vite'
 
 const CORE_PATH = 'packages/core/'
 
-function formatEntryFileNames(name: string, extendName: 'mjs' | 'cjs') {
+function formatEntryFileNames(name: string, extendName: 'mjs' | 'js') {
   if (name.startsWith('')) {
     return `${name.replace(CORE_PATH, '')}.${extendName}`
   }
@@ -17,7 +17,7 @@ export default defineConfig({
     vue(),
     dts({
       entryRoot: './packages/core',
-      outDir: ['./packages/core/es', './packages/core/lib'],
+      outDir: ['./packages/core/es'],
       tsconfigPath: './tsconfig.json'
     }),
     vitePluginImp({
@@ -32,60 +32,28 @@ export default defineConfig({
             return `element-plus/es/components/${name.replace('el-', '')}/style/index.mjs`
           }
         }
-        // {
-        //   libName: 'element-plus',
-        //   libDirectory: 'lib/components',
-        //   nameFormatter: (name: string) => {
-        //     return `${name.replace('el-', '')}/index.cjs`
-        //   },
-        //   style(name) {
-        //     return `element-plus/lib/components/${name.replace('el-', '')}/style/css.js`
-        //   }
-        // }
       ]
-    }),
-    {
-      name: 'style',
-      generateBundle(config, bundle) {
-        //这里可以获取打包后的文件目录以及代码code
-        const keys = Object.keys(bundle)
-
-        for (const key of keys) {
-          const bundler: any = bundle[key as any]
-
-          this.emitFile({
-            type: 'asset',
-            fileName: key, //文件名名不变
-            source: bundler.code
-            // ?.replace(/\.scss/g, '.css')
-            // ?.replace('../packages/core/components/', '')
-          })
-        }
-      }
-    }
+    })
   ],
   build: {
-    outDir: '/',
     cssCodeSplit: true,
     rollupOptions: {
-      external: ['element-plus', 'vue'],
+      external: ['vue', 'element-plus'],
       input: ['./packages/core/index.ts'],
+      preserveEntrySignatures: 'exports-only',
       output: [
         {
           format: 'es',
           entryFileNames: ({ name }) => formatEntryFileNames(name, 'mjs'),
-          preserveModules: true,
+          preserveModules: false,
           exports: 'named',
-          dir: './packages/core/es',
-          globals: {
-            vue: 'vue',
-            'element-plus': 'element-plus'
-          }
+          dir: './packages/core/es'
         },
         {
-          format: 'cjs',
-          entryFileNames: ({ name }) => formatEntryFileNames(name, 'cjs'),
-          preserveModules: true,
+          format: 'umd',
+          name: 'vue3-form',
+          entryFileNames: ({ name }) => formatEntryFileNames(name, 'js'),
+          preserveModules: false,
           exports: 'named',
           dir: './packages/core/lib',
           globals: {
