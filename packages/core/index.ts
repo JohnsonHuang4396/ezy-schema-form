@@ -1,5 +1,7 @@
 import * as components from './components'
-export * from './components'
+
+export * from './hooks'
+
 import type { App } from 'vue'
 
 export default {

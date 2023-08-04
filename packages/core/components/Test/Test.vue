@@ -3,6 +3,7 @@
   <el-button
     type="primary"
     size="default"
+    @click="handleClick"
   >
     test
   </el-button>
@@ -10,10 +11,19 @@
 
 <script lang="ts" setup>
   import { ElButton } from 'element-plus'
-  import { useTest } from '../../hooks/useTest'
 
   import './style/index.scss'
 
-  const { name } = useTest()
-  console.log('name :>>', name)
+  interface Props {
+    age: number
+  }
+  defineProps<Props>()
+
+  const $emits = defineEmits<{
+    click: []
+  }>()
+
+  function handleClick() {
+    $emits('click')
+  }
 </script>
