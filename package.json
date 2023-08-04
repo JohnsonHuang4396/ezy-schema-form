@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "build:core": "gulp -f ./scripts/rebuild-dist.js & pnpm build",
-    "rebuild:es": "pnpm remove-dist & pnpm build & pnpm insert-style",
+    "rebuild:es": "nodemon --watch ./packages/core --exec \"pnpm remove-dist & pnpm build & pnpm insert-style\" --config \"./nodemon.json\"",
     "remove-dist": "node ./scripts/remove-dist.js",
     "insert-style": "node ./scripts/insert-style.js",
     "ac": "node ./scripts/auto-commit.js",
@@ -42,6 +42,7 @@
     "@types/gulp-sass": "^5.0.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "husky": "^8.0.3",
+    "nodemon": "^3.0.1",
     "prettier": "^3.0.0",
     "sass": "^1.64.0",
     "sucrase": "^3.34.0",

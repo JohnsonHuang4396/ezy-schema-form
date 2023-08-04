@@ -1,0 +1,14 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "delay": 2000,
+  "ignore": ["node_modules/**/node_modules", "es/**", "lib/**"],
+  "watch": [
+    "./packages/core/components/**",
+    "./packages/core/hooks/**",
+    "./packages/core/utils/**",
+    "./packages/core/index.ts",
+    "./packages/core/package.json"
+  ],
+  "ext": "js,ts,scss,vue,json"
+}
