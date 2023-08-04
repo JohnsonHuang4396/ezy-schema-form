@@ -9,7 +9,7 @@
     "generator"
   ],
   "scripts": {
-    "dev": "vite --open",
+    "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },

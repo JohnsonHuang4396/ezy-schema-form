@@ -22,7 +22,8 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "./src/typings/auto-imports.d.ts"
+    "./src/typings/auto-imports.d.ts",
+    "node_modules/@vue3-form/core/es"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
