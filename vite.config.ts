@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import vitePluginImp from 'vite-plugin-imp'
 import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 const CORE_PATH = 'packages/core/'
 
@@ -18,7 +19,7 @@ export default defineConfig({
     dts({
       entryRoot: './packages/core',
       outDir: ['./packages/core/es'],
-      tsconfigPath: './tsconfig.json'
+      tsconfigPath: './packages/core/tsconfig.json'
     }),
     vitePluginImp({
       libList: [
@@ -48,19 +49,19 @@ export default defineConfig({
           preserveModules: false,
           exports: 'named',
           dir: './packages/core/es'
-        },
-        {
-          format: 'umd',
-          name: 'vue3-form',
-          entryFileNames: ({ name }) => formatEntryFileNames(name, 'js'),
-          preserveModules: false,
-          exports: 'named',
-          dir: './packages/core/lib',
-          globals: {
-            vue: 'vue',
-            'element-plus': 'element-plus'
-          }
         }
+        // {
+        //   format: 'umd',
+        //   name: 'vue3-form',
+        //   entryFileNames: ({ name }) => formatEntryFileNames(name, 'js'),
+        //   preserveModules: false,
+        //   exports: 'named',
+        //   dir: './packages/core/lib',
+        //   globals: {
+        //     vue: 'vue',
+        //     'element-plus': 'element-plus'
+        //   }
+        // }
       ]
     },
     lib: {

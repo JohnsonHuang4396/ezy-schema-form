@@ -6,7 +6,8 @@
   "scripts": {
     "build": "vite build",
     "build:core": "gulp -f ./scripts/rebuild-dist.js & pnpm build",
-    "rebuild:es": "nodemon --watch ./packages/core --exec \"pnpm remove-dist & pnpm build & pnpm insert-style\" --config \"./nodemon.json\"",
+    "rebuild:core": "pnpm remove-dist & pnpm build & pnpm insert-style",
+    "rebuild:watch": "nodemon --watch ./packages/core --exec \"pnpm remove-dist & pnpm build & pnpm insert-style\" --config \"./nodemon.json\"",
     "remove-dist": "node ./scripts/remove-dist.js",
     "insert-style": "node ./scripts/insert-style.js",
     "ac": "node ./scripts/auto-commit.js",

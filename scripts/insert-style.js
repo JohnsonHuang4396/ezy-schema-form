@@ -1,5 +1,6 @@
 import fs from 'fs'
 import { run, pkgPath } from './rebuild-dist.js'
+import { copyGlobal } from './insert-global.js'
 
 function insertESStyle(path) {
   // 读取构建输出文件内容
@@ -24,5 +25,7 @@ function insertESStyle(path) {
 }
 
 await run('pnpm -w build', pkgPath)
+
+copyGlobal()
 
 insertESStyle(`${pkgPath}/es/index.mjs`)
