@@ -15,7 +15,8 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vite/client", "@vue3-form/core/es/global"]
   },
   "include": [
     "src/**/*.ts",
@@ -23,7 +24,8 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "./src/typings/auto-imports.d.ts",
-    "node_modules/@vue3-form/core/es"
+    "node_modules/@vue3-form/core/es/index.d.ts",
+    "node_modules/@vue3-form/core/es/global.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
