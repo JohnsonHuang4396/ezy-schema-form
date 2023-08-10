@@ -1,7 +1,8 @@
 import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import vitePluginImp from 'vite-plugin-imp'
 import unocss from 'unocss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
 // https://vitejs.dev/config/
@@ -13,28 +14,15 @@ export default defineConfig({
     vue(),
     AutoImport({
       imports: ['vue', '@vueuse/core', 'vue-router'],
-      dirs: ['./src/utils', './src/apis'],
+      dirs: ['./src/utils', './src/apis', './src/composables'],
       dts: './src/typings/auto-import.d.ts',
       vueTemplate: true
     }),
-    unocss(),
-    vitePluginImp({
-      libList: [
-        {
-          libName: 'element-plus',
-          libDirectory: 'es/components',
-          nameFormatter: (name: string) => {
-            return `${name.replace('el-', '')}/index.mjs`
-          },
-          style(name) {
-            return `element-plus/es/components/${name.replace(
-              'el-',
-              ''
-            )}/style/css.mjs`
-          }
-        }
-      ]
-    })
+    Components({
+      dts: './src/typings/components.d.ts',
+      resolvers: [ElementPlusResolver({})]
+    }),
+    unocss()
   ],
   resolve: {
     alias: {

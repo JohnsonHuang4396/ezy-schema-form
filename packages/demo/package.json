@@ -17,6 +17,7 @@
     "element-plus": "^2.3.8"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@vue3-form/core": "workspace:*",
     "@vueuse/core": "^10.3.0",
     "axios": "^1.4.0",
@@ -26,13 +27,14 @@
   },
   "devDependencies": {
     "@types/node": "^18.17.4",
+    "@vicons/carbon": "^0.12.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "prettier": "^3.0.1",
     "sass": "^1.65.1",
     "typescript": "^5.1.6",
     "unplugin-auto-import": "^0.15.3",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^4.4.9",
-    "vite-plugin-imp": "^2.4.0",
     "vue-tsc": "^1.8.8"
   }
 }
