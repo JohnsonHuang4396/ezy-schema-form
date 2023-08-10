@@ -11,7 +11,7 @@
       <el-header>
         <Header />
       </el-header>
-      <el-main>
+      <el-main un-p="6px">
         <RouterView v-slot="{ Component }">
           <Transition
             name="move"

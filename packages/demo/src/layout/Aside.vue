@@ -82,7 +82,7 @@
   const items: Menu[] = [
     {
       icon: SkillLevelBasic,
-      index: '/home',
+      index: '/basic',
       title: '基本使用'
     },
     {

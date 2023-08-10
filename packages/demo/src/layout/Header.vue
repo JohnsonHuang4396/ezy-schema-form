@@ -22,7 +22,7 @@
       <div
         un-text="26px"
         un-font-bold
-        class="header-title"
+        :class="{ 'header-title': isDark }"
       >
         Vue3-Form
       </div>
@@ -33,6 +33,17 @@
       un-gap="12px"
       un-justify-end
     >
+      <div
+        un-font-bold
+        un-cursor-pointer
+        :class="{ 'header-title': isHover && isDark }"
+        @mouseenter="isHover = true"
+        @mouseleave="isHover = false"
+        @click="handleJumpToDoc"
+      >
+        详细文档
+      </div>
+
       <el-icon
         un-cursor-pointer
         :size="24"
@@ -40,6 +51,7 @@
       >
         <LogoGithub />
       </el-icon>
+
       <el-switch
         :model-value="isDark"
         :active-value="true"
@@ -67,6 +79,11 @@
     )
   }
 
+  function handleJumpToDoc() {
+    // TODO: 导航至文档
+    // window.open()
+  }
+
   function handleCollapsedMenu() {
     isCollapsed.value = !isCollapsed.value
   }
@@ -74,6 +91,8 @@
   const menuStyle = computed(() => ({
     transform: `rotate(${isCollapsed.value ? '0deg' : '180deg'})`
   }))
+
+  const isHover = ref<boolean>(false)
 </script>
 
 <style lang="scss" scoped>
