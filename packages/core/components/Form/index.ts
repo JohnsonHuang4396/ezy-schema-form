@@ -1,4 +1,4 @@
-import withInstall from 'packages/core/utils/withInstall'
+import { withInstall } from '../../utils'
 import _Form from './Form.vue'
 import _FormItem from './FormItem.vue'
 
