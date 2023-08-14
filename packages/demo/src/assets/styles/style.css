@@ -1,8 +1,11 @@
+html {
+  transition: all 0.2s ease;
+}
+
 body {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  transition: background-color 0.2s;
 }
 
 #app {

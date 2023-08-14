@@ -15,7 +15,7 @@
         un-cursor-pointer
         :style="menuStyle"
         :size="18"
-        @click="handleCollapsedMenu"
+        @click="toggleCollapse"
       >
         <CollapseCategories />
       </el-icon>
@@ -67,10 +67,15 @@
 </template>
 
 <script lang="ts" setup>
-  import { isDark, toggleTheme } from '@/composables/global'
   import { Sunny, Moon } from '@element-plus/icons-vue'
   import { CollapseCategories } from '@vicons/carbon'
   import { LogoGithub } from '@vicons/carbon'
+
+  const globalStore = useGlobalStore()
+
+  const { toggleTheme, toggleCollapse } = globalStore
+
+  const { isDark, isCollapsed } = storeToRefs(globalStore)
 
   function handleJumpToSourceCode() {
     window.open(
@@ -82,10 +87,6 @@
   function handleJumpToDoc() {
     // TODO: 导航至文档
     // window.open()
-  }
-
-  function handleCollapsedMenu() {
-    isCollapsed.value = !isCollapsed.value
   }
 
   const menuStyle = computed(() => ({

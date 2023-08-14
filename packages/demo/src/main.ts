@@ -13,4 +13,6 @@ app.use(Vue3Test)
 
 installRouter(app)
 
+installPinia(app)
+
 app.mount('#app')

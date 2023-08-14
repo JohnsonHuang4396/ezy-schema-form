@@ -30,6 +30,10 @@
 <script lang="ts" setup>
   import Header from '@/layout/Header.vue'
   import Aside from '@/layout/Aside.vue'
+
+  const globalStore = useGlobalStore()
+
+  const { isCollapsed } = storeToRefs(globalStore)
 </script>
 
 <style lang="scss">

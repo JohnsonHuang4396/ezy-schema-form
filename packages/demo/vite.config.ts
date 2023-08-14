@@ -13,8 +13,8 @@ export default defineConfig({
   plugins: [
     vue(),
     AutoImport({
-      imports: ['vue', '@vueuse/core', 'vue-router'],
-      dirs: ['./src/utils', './src/apis', './src/composables'],
+      imports: ['vue', '@vueuse/core', 'vue-router', 'pinia'],
+      dirs: ['./src/utils', './src/apis', './src/store'],
       dts: './src/typings/auto-import.d.ts',
       vueTemplate: true
     }),
