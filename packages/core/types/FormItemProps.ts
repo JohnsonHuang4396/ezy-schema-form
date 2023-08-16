@@ -1,82 +1,82 @@
+import type { DatePickerEmits, SelectEmits, SelectProps } from './ElementExtra'
 import type {
+  AutocompleteEmits,
   AutocompleteProps,
+  CascaderEmits,
   CascaderProps,
+  CheckboxEmits,
   CheckboxProps,
   DatePickerProps,
+  InputEmits,
+  InputNumberEmits,
   InputNumberProps,
   InputProps,
+  RadioEmits,
   RadioProps,
-  SliderProps,
-  SwitchProps,
-  TimePickerDefaultProps,
-  UploadProps,
-  VirtualizedListProps
+  SwitchEmits,
+  SwitchProps
 } from 'element-plus'
+import type { Component, VNode } from 'vue'
 import type { CompPropsLimit } from './Utils'
 
 type AutoCompleteConfig = {
   comp: 'auto-complete'
-  props: CompPropsLimit<AutocompleteProps>
+  props?: CompPropsLimit<AutocompleteProps>
+  action?: Partial<AutocompleteEmits>
 }
 
 type CascaderConfig = {
   comp: 'cascader'
-  props: CompPropsLimit<CascaderProps>
+  props?: CompPropsLimit<CascaderProps>
+  action?: Partial<CascaderEmits>
 }
 
 type CheckboxConfig = {
   comp: 'checkbox'
-  props: CompPropsLimit<CheckboxProps>
+  props?: CompPropsLimit<CheckboxProps>
+  action?: Partial<CheckboxEmits>
 }
 
 type DatePickerConfig = {
   comp: 'date-picker'
-  props: CompPropsLimit<DatePickerProps>
+  props?: CompPropsLimit<DatePickerProps>
+  action?: Partial<DatePickerEmits>
 }
 
 type InputConfig = {
   comp: 'input'
-  props: CompPropsLimit<InputProps>
+  props?: CompPropsLimit<InputProps>
+  action?: Partial<InputEmits>
 }
 
 type InputNumberConfig = {
   comp: 'input-number'
-  props: CompPropsLimit<InputNumberProps>
+  props?: CompPropsLimit<InputNumberProps>
+  action?: Partial<InputNumberEmits>
 }
 
 type RadioConfig = {
   comp: 'radio'
-  props: CompPropsLimit<RadioProps>
+  props?: CompPropsLimit<RadioProps>
+  action?: Partial<RadioEmits>
 }
 
 type SelectConfig = {
   comp: 'select'
-  props: any
-}
-
-type VirtualizedSelectConfig = {
-  comp: 'virtualized-select'
-  props: CompPropsLimit<VirtualizedListProps>
-}
-
-type SliderConfig = {
-  comp: 'slider'
-  props: CompPropsLimit<SliderProps>
+  props?: SelectProps
+  action?: SelectEmits
 }
 
 type SwitchConfig = {
   comp: 'switch'
-  props: CompPropsLimit<SwitchProps>
+  props?: CompPropsLimit<SwitchProps>
+  action?: SwitchEmits
 }
 
-type TimePickerConfig = {
-  comp: 'time-picker'
-  props: CompPropsLimit<TimePickerDefaultProps>
-}
-
-type UploadConfig = {
-  comp: 'upload'
-  props: CompPropsLimit<UploadProps>
+type CustomConfig = {
+  comp: 'custom'
+  components: Component
+  action?: { [key: string]: (...vars: any[]) => void }
 }
 
 type FormItemComponents =
@@ -88,11 +88,7 @@ type FormItemComponents =
   | InputNumberConfig
   | RadioConfig
   | SelectConfig
-  | VirtualizedSelectConfig
-  | SliderConfig
   | SwitchConfig
-  | TimePickerConfig
-  | UploadConfig
-  | UploadConfig
+  | CustomConfig
 
 const config: FormItemComponents[] = [{ comp: 'input', props: {} }]
