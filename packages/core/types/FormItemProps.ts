@@ -1,19 +1,33 @@
-import type { DatePickerEmits, SelectEmits, SelectProps } from './ElementExtra'
+import type {
+  DatePickerEmits,
+  GetInstance,
+  SelectEmits,
+  SelectOptionsGroupProps,
+  SelectOptionsProps,
+  SelectProps
+} from './ElementExtra'
 import type {
   AutocompleteEmits,
+  AutocompleteInstance,
   AutocompleteProps,
   CascaderEmits,
+  CascaderInstance,
   CascaderProps,
   CheckboxEmits,
+  CheckboxInstance,
   CheckboxProps,
   DatePickerProps,
   InputEmits,
+  InputInstance,
   InputNumberEmits,
+  InputNumberInstance,
   InputNumberProps,
   InputProps,
   RadioEmits,
+  RadioInstance,
   RadioProps,
   SwitchEmits,
+  SwitchInstance,
   SwitchProps
 } from 'element-plus'
 import type { Component } from 'vue'
@@ -31,17 +45,20 @@ export type FormCompPropsAntEmits<Props = object, Actions = object> = {
 export type AutoCompleteConfig = {
   comp: 'auto-complete'
 } & FormCompPropsAntEmits<AutocompleteProps, AutocompleteEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<AutocompleteInstance>
 
 export type CascaderConfig = {
   comp: 'cascader'
 } & FormCompPropsAntEmits<CascaderProps, CascaderEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<CascaderInstance>
 
 export type CheckboxConfig = {
   comp: 'checkbox'
 } & FormCompPropsAntEmits<CheckboxProps, CheckboxEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<CheckboxInstance>
 
 export type DatePickerConfig = {
   comp: 'date-picker'
@@ -51,32 +68,41 @@ export type DatePickerConfig = {
 export type InputConfig = {
   comp: 'input'
 } & FormCompPropsAntEmits<InputProps, InputEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<InputInstance>
 
 export type InputNumberConfig = {
   comp: 'input-number'
 } & FormCompPropsAntEmits<InputNumberProps, InputNumberEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<InputNumberInstance>
 
 export type RadioConfig = {
   comp: 'radio'
 } & FormCompPropsAntEmits<RadioProps, RadioEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<RadioInstance>
 
 export type SelectConfig = {
   comp: 'select'
 } & FormCompPropsAntEmits<SelectProps, SelectEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  (
+    | { type: 'group'; optionsGroup: SelectOptionsGroupProps }
+    | { type: 'options'; options: SelectOptionsProps[] }
+  )
 
 export type SwitchConfig = {
   comp: 'switch'
 } & FormCompPropsAntEmits<SwitchProps, SwitchEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<SwitchInstance>
 
 export type CustomConfig = {
   comp: 'custom'
   action?: { [key: string]: (...vars: any[]) => void }
-} & FormCustomComponent
+} & FormCustomComponent &
+  GetInstance
 
 export type FormItemComponents =
   | AutoCompleteConfig
@@ -89,3 +115,10 @@ export type FormItemComponents =
   | SelectConfig
   | SwitchConfig
   | CustomConfig
+
+const autoComplete: FormItemComponents[] = [
+  {
+    comp: 'auto-complete',
+    afterLoaded(instance) {}
+  }
+]

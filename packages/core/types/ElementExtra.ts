@@ -306,3 +306,51 @@ export interface SelectEmits {
    */
   focus: (event: FocusEvent) => void
 }
+
+export interface SelectOptionsGroupProps {
+  /**
+   * @desc 分组的组名
+   * @type {string}
+   * @memberof SelectOptionsGroupProps
+   */
+  label: string
+  /**
+   * @desc 是否将该分组下所有选项置为禁用
+   * @default false
+   * @type {boolean}
+   * @memberof SelectOptionsGroupProps
+   */
+  disabled?: boolean
+  /**
+   * @desc 选项配置
+   * @type {SelectOptionsProps[]}
+   * @memberof SelectOptionsGroupProps
+   */
+  options: SelectOptionsProps[]
+}
+
+export interface SelectOptionsProps {
+  /**
+   * @desc 选项的值
+   * @type {(string | number | boolean | object)}
+   * @memberof SelectOptionsProps
+   */
+  value: string | number | boolean | object
+  /**
+   * @desc 选项的标签，若不设置则默认与value相同
+   * @type {(string | number)}
+   * @memberof SelectOptionsProps
+   */
+  label: string | number
+  /**
+   * @desc 是否禁用该选项
+   * @default false
+   * @type {boolean}
+   * @memberof SelectOptionsProps
+   */
+  disabled?: boolean
+}
+
+export type GetInstance<T = Component> = {
+  afterLoaded?: (instance: T) => void
+}
