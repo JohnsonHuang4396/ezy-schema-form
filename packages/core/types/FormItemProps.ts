@@ -16,70 +16,69 @@ import type {
   SwitchEmits,
   SwitchProps
 } from 'element-plus'
-import type { Component, VNode } from 'vue'
+import type { Component } from 'vue'
 import type { CompPropsLimit } from './Utils'
 
-type AutoCompleteConfig = {
+export interface FormCustomComponent<T = Component> {
+  component?: T
+}
+
+export type FormCompPropsAntEmits<Props = object, Actions = object> = {
+  props?: CompPropsLimit<Props>
+  actions?: Partial<Actions>
+}
+
+export type AutoCompleteConfig = {
   comp: 'auto-complete'
-  props?: CompPropsLimit<AutocompleteProps>
-  action?: Partial<AutocompleteEmits>
-}
+} & FormCompPropsAntEmits<AutocompleteProps, AutocompleteEmits> &
+  FormCustomComponent
 
-type CascaderConfig = {
+export type CascaderConfig = {
   comp: 'cascader'
-  props?: CompPropsLimit<CascaderProps>
-  action?: Partial<CascaderEmits>
-}
+} & FormCompPropsAntEmits<CascaderProps, CascaderEmits> &
+  FormCustomComponent
 
-type CheckboxConfig = {
+export type CheckboxConfig = {
   comp: 'checkbox'
-  props?: CompPropsLimit<CheckboxProps>
-  action?: Partial<CheckboxEmits>
-}
+} & FormCompPropsAntEmits<CheckboxProps, CheckboxEmits> &
+  FormCustomComponent
 
-type DatePickerConfig = {
+export type DatePickerConfig = {
   comp: 'date-picker'
-  props?: CompPropsLimit<DatePickerProps>
-  action?: Partial<DatePickerEmits>
-}
+} & FormCompPropsAntEmits<DatePickerProps, DatePickerEmits> &
+  FormCustomComponent
 
-type InputConfig = {
+export type InputConfig = {
   comp: 'input'
-  props?: CompPropsLimit<InputProps>
-  action?: Partial<InputEmits>
-}
+} & FormCompPropsAntEmits<InputProps, InputEmits> &
+  FormCustomComponent
 
-type InputNumberConfig = {
+export type InputNumberConfig = {
   comp: 'input-number'
-  props?: CompPropsLimit<InputNumberProps>
-  action?: Partial<InputNumberEmits>
-}
+} & FormCompPropsAntEmits<InputNumberProps, InputNumberEmits> &
+  FormCustomComponent
 
-type RadioConfig = {
+export type RadioConfig = {
   comp: 'radio'
-  props?: CompPropsLimit<RadioProps>
-  action?: Partial<RadioEmits>
-}
+} & FormCompPropsAntEmits<RadioProps, RadioEmits> &
+  FormCustomComponent
 
-type SelectConfig = {
+export type SelectConfig = {
   comp: 'select'
-  props?: SelectProps
-  action?: SelectEmits
-}
+} & FormCompPropsAntEmits<SelectProps, SelectEmits> &
+  FormCustomComponent
 
-type SwitchConfig = {
+export type SwitchConfig = {
   comp: 'switch'
-  props?: CompPropsLimit<SwitchProps>
-  action?: SwitchEmits
-}
+} & FormCompPropsAntEmits<SwitchProps, SwitchEmits> &
+  FormCustomComponent
 
-type CustomConfig = {
+export type CustomConfig = {
   comp: 'custom'
-  components: Component
   action?: { [key: string]: (...vars: any[]) => void }
-}
+} & FormCustomComponent
 
-type FormItemComponents =
+export type FormItemComponents =
   | AutoCompleteConfig
   | CascaderConfig
   | CheckboxConfig
@@ -90,5 +89,3 @@ type FormItemComponents =
   | SelectConfig
   | SwitchConfig
   | CustomConfig
-
-const config: FormItemComponents[] = [{ comp: 'input', props: {} }]
