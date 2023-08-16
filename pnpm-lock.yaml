@@ -17,7 +17,7 @@ importers:
         version: 2.26.2
       '@commitlint/cli':
         specifier: ^17.7.0
-        version: 17.7.0(@types/node@18.17.4)(typescript@4.9.5)
+        version: 17.7.0(@types/node@18.17.4)(typescript@5.1.6)
       '@commitlint/config-conventional':
         specifier: ^17.7.0
         version: 17.7.0
@@ -46,14 +46,14 @@ importers:
         specifier: ^1.65.1
         version: 1.65.1
       typescript:
-        specifier: ^4.9.5
-        version: registry.npmmirror.com/typescript@4.9.5
+        specifier: ^5.1.6
+        version: 5.1.6
       vite:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@18.17.4)(sass@1.65.1)
       vite-plugin-dts:
-        specifier: ^3.5.1
-        version: 3.5.1(@types/node@18.17.4)(typescript@4.9.5)(vite@4.4.9)
+        specifier: ^3.5.2
+        version: 3.5.2(@types/node@18.17.4)(typescript@5.1.6)(vite@4.4.9)
       vite-plugin-imp:
         specifier: ^2.4.0
         version: registry.npmmirror.com/vite-plugin-imp@2.4.0(vite@4.4.9)
@@ -502,14 +502,14 @@ packages:
       prettier: 2.8.8
     dev: true
 
-  /@commitlint/cli@17.7.0(@types/node@18.17.4)(typescript@4.9.5):
+  /@commitlint/cli@17.7.0(@types/node@18.17.4)(typescript@5.1.6):
     resolution: {integrity: sha512-28PNJaGuBQZNoz3sd+6uO3b4+5PY+vWzyBfy5JOvFB7QtoZVXf2FYTQs5VO1cn7yAd3y9/0Rx0x6Vx82W/zhuA==}
     engines: {node: '>=v14'}
     hasBin: true
     dependencies:
       '@commitlint/format': 17.4.4
       '@commitlint/lint': 17.7.0
-      '@commitlint/load': 17.7.0(@types/node@18.17.4)(typescript@4.9.5)
+      '@commitlint/load': 17.7.0(@types/node@18.17.4)(typescript@5.1.6)
       '@commitlint/read': 17.5.1
       '@commitlint/types': 17.4.4
       execa: 5.1.1
@@ -580,7 +580,7 @@ packages:
       '@commitlint/types': 17.4.4
     dev: true
 
-  /@commitlint/load@17.7.0(@types/node@18.17.4)(typescript@4.9.5):
+  /@commitlint/load@17.7.0(@types/node@18.17.4)(typescript@5.1.6):
     resolution: {integrity: sha512-jHKErVteyENYKkUiESNE6JYbaU4Sx58HXqv09/p7cKHzTtfyperlRvyqqTnxS8bas5Jjg4MP3MDZwdBrgRm8lw==}
     engines: {node: '>=v14'}
     dependencies:
@@ -590,7 +590,7 @@ packages:
       '@commitlint/types': 17.4.4
       chalk: 4.1.2
       cosmiconfig: 8.2.0
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@18.17.4)(cosmiconfig@8.2.0)(typescript@4.9.5)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@18.17.4)(cosmiconfig@8.2.0)(typescript@5.1.6)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -677,7 +677,7 @@ packages:
     peerDependencies:
       vue: ^3.2.0
     dependencies:
-      vue: 3.3.4
+      vue: registry.npmmirror.com/vue@3.3.4
     dev: false
 
   /@esbuild/android-arm64@0.18.20:
@@ -1407,25 +1407,6 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
 
-  /@vue/language-core@1.8.8(typescript@4.9.5):
-    resolution: {integrity: sha512-i4KMTuPazf48yMdYoebTkgSOJdFraE4pQf0B+FTOFkbB+6hAfjrSou/UmYWRsWyZV6r4Rc6DDZdI39CJwL0rWw==}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-    dependencies:
-      '@volar/language-core': 1.10.0
-      '@volar/source-map': 1.10.0
-      '@vue/compiler-dom': 3.3.4
-      '@vue/reactivity': 3.3.4
-      '@vue/shared': 3.3.4
-      minimatch: 9.0.3
-      muggle-string: 0.3.1
-      typescript: registry.npmmirror.com/typescript@4.9.5
-      vue-template-compiler: 2.7.14
-    dev: true
-
   /@vue/language-core@1.8.8(typescript@5.1.6):
     resolution: {integrity: sha512-i4KMTuPazf48yMdYoebTkgSOJdFraE4pQf0B+FTOFkbB+6hAfjrSou/UmYWRsWyZV6r4Rc6DDZdI39CJwL0rWw==}
     peerDependencies:
@@ -1483,15 +1464,6 @@ packages:
 
   /@vue/shared@3.3.4:
     resolution: {integrity: sha512-7OjdcV8vQ74eiz1TZLzZP4JwqM5fA94K6yntPS5Z25r9HDuGNzaGdgvwKYq6S+MxwF0TFRwe50fIR/MYnakdkQ==}
-
-  /@vue/typescript@1.8.8(typescript@4.9.5):
-    resolution: {integrity: sha512-jUnmMB6egu5wl342eaUH236v8tdcEPXXkPgj+eI/F6JwW/lb+yAU6U07ZbQ3MVabZRlupIlPESB7ajgAGixhow==}
-    dependencies:
-      '@volar/typescript': 1.10.0
-      '@vue/language-core': 1.8.8(typescript@4.9.5)
-    transitivePeerDependencies:
-      - typescript
-    dev: true
 
   /@vue/typescript@1.8.8(typescript@5.1.6):
     resolution: {integrity: sha512-jUnmMB6egu5wl342eaUH236v8tdcEPXXkPgj+eI/F6JwW/lb+yAU6U07ZbQ3MVabZRlupIlPESB7ajgAGixhow==}
@@ -1939,7 +1911,7 @@ packages:
       split2: 3.2.2
     dev: true
 
-  /cosmiconfig-typescript-loader@5.0.0(@types/node@18.17.4)(cosmiconfig@8.2.0)(typescript@4.9.5):
+  /cosmiconfig-typescript-loader@5.0.0(@types/node@18.17.4)(cosmiconfig@8.2.0)(typescript@5.1.6):
     resolution: {integrity: sha512-+8cK7jRAReYkMwMiG+bxhcNKiHJDM6bR9FD/nGBXOWdMLuYawjF5cGrtLilJ+LGd3ZjCXnJjR5DkfWPoIVlqJA==}
     engines: {node: '>=v16'}
     peerDependencies:
@@ -1950,7 +1922,7 @@ packages:
       '@types/node': 18.17.4
       cosmiconfig: 8.2.0
       jiti: 1.19.1
-      typescript: registry.npmmirror.com/typescript@4.9.5
+      typescript: 5.1.6
     dev: true
 
   /cosmiconfig@8.2.0:
@@ -4187,8 +4159,8 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vite-plugin-dts@3.5.1(@types/node@18.17.4)(typescript@4.9.5)(vite@4.4.9):
-    resolution: {integrity: sha512-wrrIvRTWq9xL0HKOUvJyJ+wivEoLsZ2GU2I2000v5tAAUtu9gE+5OUmUJ9yNkmyYz3tSPedkkiXHeb5jnnSXhg==}
+  /vite-plugin-dts@3.5.2(@types/node@18.17.4)(typescript@5.1.6)(vite@4.4.9):
+    resolution: {integrity: sha512-iKc851+jdHEoN1ifbOEsoMs+/Zg26PE1EyO2Jc+4apOWRoaeK2zRJnaStgUuJaVaEcAjTqWzpNgCAMq7iO6DWA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
@@ -4199,12 +4171,12 @@ packages:
     dependencies:
       '@microsoft/api-extractor': 7.36.3(@types/node@18.17.4)
       '@rollup/pluginutils': 5.0.2
-      '@vue/language-core': 1.8.8(typescript@4.9.5)
+      '@vue/language-core': 1.8.8(typescript@5.1.6)
       debug: 4.3.4
       kolorist: 1.8.0
-      typescript: registry.npmmirror.com/typescript@4.9.5
+      typescript: 5.1.6
       vite: 4.4.9(@types/node@18.17.4)(sass@1.65.1)
-      vue-tsc: 1.8.8(typescript@4.9.5)
+      vue-tsc: 1.8.8(typescript@5.1.6)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -4296,7 +4268,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
-      vue: 3.3.4
+      vue: registry.npmmirror.com/vue@3.3.4
 
   /vue-router@4.2.4(vue@3.3.4):
     resolution: {integrity: sha512-9PISkmaCO02OzPVOMq2w82ilty6+xJmQrarYZDkjZBfl4RvYAlt4PKnEX21oW4KTtWfa9OuO/b3qk1Od3AEdCQ==}
@@ -4312,18 +4284,6 @@ packages:
     dependencies:
       de-indent: 1.0.2
       he: 1.2.0
-    dev: true
-
-  /vue-tsc@1.8.8(typescript@4.9.5):
-    resolution: {integrity: sha512-bSydNFQsF7AMvwWsRXD7cBIXaNs/KSjvzWLymq/UtKE36697sboX4EccSHFVxvgdBlI1frYPc/VMKJNB7DFeDQ==}
-    hasBin: true
-    peerDependencies:
-      typescript: '*'
-    dependencies:
-      '@vue/language-core': 1.8.8(typescript@4.9.5)
-      '@vue/typescript': 1.8.8(typescript@4.9.5)
-      semver: 7.5.4
-      typescript: registry.npmmirror.com/typescript@4.9.5
     dev: true
 
   /vue-tsc@1.8.8(typescript@5.1.6):
