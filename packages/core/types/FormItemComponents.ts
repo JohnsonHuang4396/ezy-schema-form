@@ -1,3 +1,10 @@
+import {
+  CascaderPanelInstance,
+  CheckboxGroupInstance,
+  CheckboxGroupProps,
+  ElDatePicker,
+  ElSelect
+} from 'element-plus'
 import type {
   DatePickerEmits,
   GetInstance,
@@ -37,7 +44,7 @@ export interface FormCustomComponent<T = Component> {
   component?: T
 }
 
-export type FormCompPropsAntEmits<Props = object, Actions = object> = {
+export type FormCompPropsAntEmits<Props = object, Actions = never> = {
   props?: CompPropsLimit<Props>
   actions?: Partial<Actions>
 }
@@ -54,6 +61,13 @@ export type CascaderConfig = {
   FormCustomComponent &
   GetInstance<CascaderInstance>
 
+export type CheckboxGroupConfig = {
+  comp: 'checkbox-group'
+  children: Omit<CheckboxConfig, 'comp'>[]
+} & FormCompPropsAntEmits<CheckboxGroupProps, CheckboxEmits> &
+  FormCustomComponent &
+  GetInstance<CheckboxGroupInstance>
+
 export type CheckboxConfig = {
   comp: 'checkbox'
 } & FormCompPropsAntEmits<CheckboxProps, CheckboxEmits> &
@@ -63,7 +77,8 @@ export type CheckboxConfig = {
 export type DatePickerConfig = {
   comp: 'date-picker'
 } & FormCompPropsAntEmits<DatePickerProps, DatePickerEmits> &
-  FormCustomComponent
+  FormCustomComponent &
+  GetInstance<InstanceType<typeof ElDatePicker>>
 
 export type InputConfig = {
   comp: 'input'
@@ -85,12 +100,10 @@ export type RadioConfig = {
 
 export type SelectConfig = {
   comp: 'select'
+  options: SelectOptionsProps[]
 } & FormCompPropsAntEmits<SelectProps, SelectEmits> &
   FormCustomComponent &
-  (
-    | { type: 'group'; optionsGroup: SelectOptionsGroupProps }
-    | { type: 'options'; options: SelectOptionsProps[] }
-  )
+  GetInstance<typeof ElSelect>
 
 export type SwitchConfig = {
   comp: 'switch'
@@ -100,8 +113,8 @@ export type SwitchConfig = {
 
 export type CustomConfig = {
   comp: 'custom'
-  action?: { [key: string]: (...vars: any[]) => void }
-} & FormCustomComponent &
+} & FormCompPropsAntEmits<Record<string, any>, Record<string, (...vars: any[]) => void>> &
+  FormCustomComponent &
   GetInstance
 
 export type FormItemComponents =
@@ -115,10 +128,3 @@ export type FormItemComponents =
   | SelectConfig
   | SwitchConfig
   | CustomConfig
-
-const autoComplete: FormItemComponents[] = [
-  {
-    comp: 'auto-complete',
-    afterLoaded(instance) {}
-  }
-]
