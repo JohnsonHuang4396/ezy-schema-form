@@ -1,3 +1,1 @@
-import { useTest } from './useTest'
-
-export { useTest }
+export * from './useForm'
