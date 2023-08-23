@@ -1,3 +1,1 @@
-import { withInstall } from './withInstall'
-
-export { withInstall }
+export * from './withInstall'

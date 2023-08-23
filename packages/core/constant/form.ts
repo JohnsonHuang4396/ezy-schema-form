@@ -1,4 +1,4 @@
-import type { Vue3FormProps } from './../../types/Form'
+import type { Vue3FormProps } from 'types'
 
 export const VUE3_FORM_DEFAULT_PROPS: Vue3FormProps = {
   props: {
@@ -6,5 +6,5 @@ export const VUE3_FORM_DEFAULT_PROPS: Vue3FormProps = {
     labelWidth: 80
   },
   classList: [],
-  items: []
+  schema: []
 }

@@ -5,7 +5,7 @@
     v-bind="attrs"
     @validate="handleFormValidate"
   >
-    <FormItem :schema="config.schema" />
+    <FormItem :schema="schema" />
   </el-form>
 </template>
 
@@ -13,8 +13,8 @@
   import FormItem from './FormItem.vue'
   import { computed, onMounted, ref, watch } from 'vue'
   import { ElForm } from 'element-plus'
-  import { VUE3_FORM_DEFAULT_PROPS } from './constant'
-  import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits } from 'types'
+  import { VUE3_FORM_DEFAULT_PROPS } from 'constant'
+  import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits, Vue3FormItem } from 'types'
   import type { FormValidateCallback, FormItemProp } from 'element-plus'
   import type { Arrayable } from 'element-plus/es/utils'
 
@@ -37,10 +37,24 @@
     attrs.value = { props: nProps, actions: nActions }
   }
 
+  const schema = ref<Vue3FormItem[]>($props.config.schema)
+
+  function setSchema(propSchema: Vue3FormItem[]) {
+    schema.value = [...propSchema]
+  }
+
   watch(
     () => [$props.config.props, $props.config.actions],
     () => {
       setAttrs({ props: $props.config.props, actions: $props.config.actions })
+    },
+    { deep: true }
+  )
+
+  watch(
+    () => $props.config.schema,
+    () => {
+      setSchema($props.config.schema)
     },
     { deep: true }
   )
@@ -98,7 +112,8 @@
     clearValidate,
     scrollToField,
     resetFields,
-    setAttrs
+    setAttrs,
+    setSchema
   })
 </script>
 

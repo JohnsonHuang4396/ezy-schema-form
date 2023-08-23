@@ -9,7 +9,6 @@ import type {
   DatePickerEmits,
   GetInstance,
   SelectEmits,
-  SelectOptionsGroupProps,
   SelectOptionsProps,
   SelectProps
 } from './ElementExtra'
@@ -82,7 +81,7 @@ export type DatePickerConfig = {
 
 export type InputConfig = {
   comp: 'input'
-} & FormCompPropsAntEmits<InputProps, InputEmits> &
+} & FormCompPropsAntEmits<Omit<InputProps, 'inputStyle'>, InputEmits> &
   FormCustomComponent &
   GetInstance<InputInstance>
 
