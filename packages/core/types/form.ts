@@ -3,7 +3,7 @@ import type { Vue3FormItem } from './FormItem'
 import type { FormCompPropsAntEmits } from './'
 
 export interface Vue3FormProps extends FormCompPropsAntEmits<FormProps, FormEmits> {
-  classList: string | string[]
+  classList?: string | string[]
   schema: Vue3FormItem[]
 }
 

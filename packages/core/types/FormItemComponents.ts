@@ -11,7 +11,7 @@ import type {
   RadioConfig,
   SelectConfig,
   SwitchConfig
-} from 'components'
+} from './components'
 
 export interface FormCustomComponent<T = Component> {
   component?: T

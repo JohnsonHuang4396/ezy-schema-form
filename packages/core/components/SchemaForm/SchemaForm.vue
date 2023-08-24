@@ -1,7 +1,10 @@
 <template>
   <el-form
+    class="vue3-form"
     ref="vue3FormRef"
     :class="className"
+    :model="formModel"
+    :rules="formRules"
     v-bind="attrs"
     @validate="handleFormValidate"
   >
@@ -10,13 +13,15 @@
 </template>
 
 <script lang="ts" setup>
-  import FormItem from './FormItem.vue'
-  import { computed, onMounted, ref, watch } from 'vue'
-  import { ElForm } from 'element-plus'
-  import { VUE3_FORM_DEFAULT_PROPS } from 'constant'
-  import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits, Vue3FormItem } from 'types'
+  import FormItem from './SchemaFormItem.vue'
+  import { computed, ref, watch } from 'vue'
+  import { ElForm, FormItemRule } from 'element-plus'
+  import { VUE3_FORM_DEFAULT_PROPS } from '../../constant'
+  import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits, Vue3FormItem } from '../../types'
   import type { FormValidateCallback, FormItemProp } from 'element-plus'
   import type { Arrayable } from 'element-plus/es/utils'
+
+  import './style/index.scss'
 
   interface Props extends Vue3FormConfig {}
   const $props = withDefaults(defineProps<Props>(), {
@@ -24,6 +29,18 @@
   })
 
   const $emits = defineEmits<Vue3FormEmits>()
+
+  const formModel = ref<Record<string, any>>({})
+
+  const formRules = computed(() => {
+    return $props.config.schema.reduce(
+      (rule, item) => {
+        rule[item.field] = item.rule ?? {}
+        return rule
+      },
+      {} as unknown as Record<string, Arrayable<FormItemRule>>
+    )
+  })
 
   const attrs = ref<Pick<Vue3FormProps, 'props' | 'actions'>>({
     props: { ...$props.config.props },
@@ -60,6 +77,7 @@
   )
 
   const className = computed<string[]>(() => {
+    if (!$props.config.classList) return []
     return Array.isArray($props.config.classList)
       ? [...$props.config.classList]
       : [...$props.config.classList.split(',')]
@@ -97,14 +115,6 @@
   function handleFormValidate(prop: FormItemProp, isValid: boolean, message: string) {
     $emits('onValidate', prop, isValid, message)
   }
-
-  function onRegister() {
-    if (!vue3FormRef.value) return
-  }
-
-  onMounted(() => {
-    onRegister()
-  })
 
   defineExpose({
     validate,
