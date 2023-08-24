@@ -8,15 +8,17 @@
     v-bind="attrs"
     @validate="handleFormValidate"
   >
-    <FormItem :schema="schema" />
+    <SchemaFormItem :schema="schema" />
   </el-form>
 </template>
 
 <script lang="ts" setup>
-  import FormItem from './SchemaFormItem.vue'
-  import { computed, ref, watch } from 'vue'
+  import SchemaFormItem from './SchemaFormItem.vue'
+  import { computed, provide, ref, watch } from 'vue'
   import { ElForm, FormItemRule } from 'element-plus'
-  import { VUE3_FORM_DEFAULT_PROPS } from '../../constant'
+  import { createModel } from '../../utils'
+  import { useContext } from '../../hooks/useContext'
+  import { VUE3_FORM_DEFAULT_PROPS, VUE3_FORM_PROVIDE_KEY } from '../../constant'
   import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits, Vue3FormItem } from '../../types'
   import type { FormValidateCallback, FormItemProp } from 'element-plus'
   import type { Arrayable } from 'element-plus/es/utils'
@@ -30,7 +32,11 @@
 
   const $emits = defineEmits<Vue3FormEmits>()
 
-  const formModel = ref<Record<string, any>>({})
+  const formModel = ref<Record<string, any>>(createModel($props.config.schema))
+
+  const { get, set } = useContext()
+  set(VUE3_FORM_PROVIDE_KEY)
+  provide(get(VUE3_FORM_PROVIDE_KEY), formModel)
 
   const formRules = computed(() => {
     return $props.config.schema.reduce(
@@ -57,7 +63,9 @@
   const schema = ref<Vue3FormItem[]>($props.config.schema)
 
   function setSchema(propSchema: Vue3FormItem[]) {
-    schema.value = [...propSchema]
+    let schemaList: Vue3FormItem[] = []
+    if (propSchema && propSchema.length) schemaList = [...propSchema]
+    schema.value = schemaList
   }
 
   watch(
@@ -65,15 +73,16 @@
     () => {
       setAttrs({ props: $props.config.props, actions: $props.config.actions })
     },
-    { deep: true }
+    { deep: true, immediate: true }
   )
 
   watch(
     () => $props.config.schema,
     () => {
       setSchema($props.config.schema)
+      formModel.value = createModel($props.config.schema)
     },
-    { deep: true }
+    { deep: true, immediate: true }
   )
 
   const className = computed<string[]>(() => {
@@ -85,16 +94,33 @@
 
   const vue3FormRef = ref<InstanceType<typeof ElForm>>()
 
-  async function validate(cb?: FormValidateCallback) {
-    if (!vue3FormRef.value) return
-    if (!cb) return await vue3FormRef.value.validate()
-    vue3FormRef.value.validate(cb)
+  async function validate(
+    cb?: FormValidateCallback
+  ): Promise<[boolean | undefined, unknown | undefined]> {
+    if (!vue3FormRef.value) return [undefined, new Error("Form didn't init yet!")]
+    try {
+      let result: boolean
+      if (cb) result = await vue3FormRef.value.validate(cb)
+      else result = await vue3FormRef.value.validate()
+      return [result, undefined]
+    } catch (error) {
+      return [undefined, error]
+    }
   }
 
-  async function validateField(props?: Arrayable<FormItemProp>, cb?: FormValidateCallback) {
-    if (!vue3FormRef.value) return
-    if (!cb) return vue3FormRef.value.validateField(props)
-    vue3FormRef.value.validateField(props, cb)
+  async function validateField(
+    props?: Arrayable<FormItemProp>,
+    cb?: FormValidateCallback
+  ): Promise<[boolean | undefined, unknown | undefined]> {
+    if (!vue3FormRef.value) return [undefined, new Error("Form didn't init yet!")]
+    try {
+      let result: boolean
+      if (cb) result = await vue3FormRef.value.validateField(props, cb)
+      else result = await vue3FormRef.value.validateField(props)
+      return [result, undefined]
+    } catch (error) {
+      return [undefined, error]
+    }
   }
 
   function resetFields(props?: Arrayable<FormItemProp>) {

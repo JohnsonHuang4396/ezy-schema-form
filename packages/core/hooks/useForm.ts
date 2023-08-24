@@ -1,6 +1,7 @@
-import Vue3Form from 'components/Form/Form.vue'
+import Vue3Form from 'components/SchemaForm/SchemaForm.vue'
+import { onMounted } from 'vue'
 import type { Vue3FormItem } from 'types'
-import { onMounted, Ref } from 'vue'
+import type { Ref } from 'vue'
 
 export function useForm(instance: Ref<InstanceType<typeof Vue3Form> | null> | undefined) {
   let register: Ref<InstanceType<typeof Vue3Form> | null>

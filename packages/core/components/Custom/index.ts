@@ -1,3 +1,4 @@
-import Custom from './Custom.vue'
+import _Custom from './Custom.vue'
+import { withInstall } from '../../utils/withInstall'
 
-export { Custom }
+export const Custom = withInstall(_Custom)

@@ -1,3 +1,21 @@
+@mixin w-full {
+  width: 100%;
+}
+
 .vue3-form {
-  color: #ffffff;
+  @include w-full;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 8px;
+  row-gap: 16px;
+  justify-items: end;
+  align-items: center;
+}
+
+.vue3-form-item {
+  @include w-full;
+  &__component {
+    @include w-full;
+  }
 }
