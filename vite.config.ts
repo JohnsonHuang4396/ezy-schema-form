@@ -2,7 +2,6 @@ import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
 import vitePluginImp from 'vite-plugin-imp'
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
 
 const CORE_PATH = 'packages/core/'
 
@@ -27,6 +26,7 @@ export default defineConfig({
           libName: 'element-plus',
           libDirectory: 'es/components',
           nameFormatter: (name: string) => {
+            if (name.replace('el-', '') === 'form-item') return 'form/src/form-item2.mjs'
             return `${name.replace('el-', '')}/index.mjs`
           },
           style(name) {
