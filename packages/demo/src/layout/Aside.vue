@@ -70,6 +70,10 @@
 
   const route = useRoute()
 
+  const globalStore = useGlobalStore()
+
+  const { isCollapsed } = storeToRefs(globalStore)
+
   type Icon = typeof SkillLevelBasic
 
   interface Menu {
