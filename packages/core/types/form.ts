@@ -1,8 +1,8 @@
-import type { FormEmits, FormItemProp, FormProps } from 'element-plus'
+import type { FormItemProp, FormProps } from 'element-plus'
 import type { Vue3FormItem } from './FormItem'
 import type { FormCompPropsAntEmits } from './'
 
-export interface Vue3FormProps extends FormCompPropsAntEmits<FormProps, FormEmits> {
+export interface Vue3FormProps extends FormCompPropsAntEmits<FormProps> {
   classList?: string | string[]
   schema: Vue3FormItem[]
 }

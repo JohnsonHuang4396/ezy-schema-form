@@ -28,19 +28,34 @@ componentsMap.set('switch', ElSwitch)
 
 export function useComponents() {
   function add(compName: string, component: Component) {
+    if (!compName) return
     componentsMap.set(compName, component)
   }
 
   function del(compName: string) {
+    if (!compName) return
     componentsMap.delete(compName)
   }
 
   function get(compName: string | string[]) {
+    if (!compName) return
     if (Array.isArray(compName)) {
       return compName.map(name => componentsMap.get(name))
     }
     return componentsMap.get(compName)
   }
 
-  return { add, del, get }
+  function registerAllComponent() {
+    const list = [...componentsMap.values()]
+    return list.reduce(
+      (target, component) => {
+        const name = component.name
+        if (name) target[name] = component
+        return target
+      },
+      {} as Record<string, Component>
+    )
+  }
+
+  return { add, del, get, registerAllComponent }
 }

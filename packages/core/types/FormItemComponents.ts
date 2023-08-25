@@ -1,5 +1,3 @@
-import type { Component } from 'vue'
-import type { CompPropsLimit } from './Utils'
 import type {
   AutoCompleteConfig,
   CascaderConfig,
@@ -12,17 +10,9 @@ import type {
   SelectConfig,
   SwitchConfig
 } from './components'
+import type { RenderComponent } from './Utils'
 
-export interface FormCustomComponent<T = Component> {
-  component?: T
-}
-
-export type FormCompPropsAntEmits<Props = object, Actions = never> = {
-  props?: CompPropsLimit<Props>
-  actions?: Partial<Actions>
-}
-
-export type FormItemComponents =
+type ComponentConfig =
   | AutoCompleteConfig
   | CascaderConfig
   | CheckboxConfig
@@ -33,3 +23,5 @@ export type FormItemComponents =
   | SelectConfig
   | SwitchConfig
   | CustomConfig
+
+export type FormItemComponents = RenderComponent<ComponentConfig>

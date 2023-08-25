@@ -5,22 +5,27 @@
     :class="className"
     :model="formModel"
     :rules="formRules"
-    v-bind="attrs"
+    v-bind="formAttrs"
     @validate="handleFormValidate"
   >
-    <SchemaFormItem :schema="schema" />
+    <template
+      v-for="(item, index) in schema"
+      :key="`${item.field}-${index}`"
+    >
+      <SchemaFormItem :schema="item" />
+    </template>
   </el-form>
 </template>
 
 <script lang="ts" setup>
   import SchemaFormItem from './SchemaFormItem.vue'
   import { computed, provide, ref, watch } from 'vue'
-  import { ElForm, FormItemRule } from 'element-plus'
+  import { ElForm } from 'element-plus'
   import { createModel } from '../../utils'
   import { useContext } from '../../hooks/useContext'
   import { VUE3_FORM_DEFAULT_PROPS, VUE3_FORM_PROVIDE_KEY } from '../../constant'
   import type { Vue3FormConfig, Vue3FormProps, Vue3FormEmits, Vue3FormItem } from '../../types'
-  import type { FormValidateCallback, FormItemProp } from 'element-plus'
+  import type { FormValidateCallback, FormItemProp, FormItemRule } from 'element-plus'
   import type { Arrayable } from 'element-plus/es/utils'
 
   import './style/index.scss'
@@ -41,23 +46,20 @@
   const formRules = computed(() => {
     return $props.config.schema.reduce(
       (rule, item) => {
-        rule[item.field] = item.rule ?? {}
+        if (item.rule) rule[item.field] = item.rule
         return rule
       },
       {} as unknown as Record<string, Arrayable<FormItemRule>>
     )
   })
 
-  const attrs = ref<Pick<Vue3FormProps, 'props' | 'actions'>>({
-    props: { ...$props.config.props },
-    actions: { ...$props.config.actions }
+  const formAttrs = ref<Record<string, any>>({
+    ...$props.config.attrs
   })
 
-  function setAttrs(propAttrs: Pick<Vue3FormProps, 'props' | 'actions'>) {
-    const { props, actions } = propAttrs
-    const nProps = props ? { ...props } : {}
-    const nActions = actions ? { ...actions } : {}
-    attrs.value = { props: nProps, actions: nActions }
+  function setAttrs(propAttrs: Pick<Vue3FormProps, 'attrs'>) {
+    const { attrs = {} } = propAttrs
+    formAttrs.value = { ...VUE3_FORM_DEFAULT_PROPS.attrs, ...attrs }
   }
 
   const schema = ref<Vue3FormItem[]>($props.config.schema)
@@ -69,9 +71,9 @@
   }
 
   watch(
-    () => [$props.config.props, $props.config.actions],
-    () => {
-      setAttrs({ props: $props.config.props, actions: $props.config.actions })
+    () => $props.config.attrs,
+    nv => {
+      setAttrs({ attrs: nv })
     },
     { deep: true, immediate: true }
   )
