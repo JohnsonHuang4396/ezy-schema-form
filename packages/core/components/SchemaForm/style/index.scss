@@ -1,5 +1,5 @@
 @mixin w-full {
-  width: 100%;
+  width: 100% !important;
 }
 
 .vue3-form {
@@ -34,5 +34,17 @@
     &__label {
       margin-left: 0;
     }
+  }
+}
+
+.el-date-editor.el-input > .el-input__wrapper {
+  width: 100%;
+}
+
+.el-input__suffix-inner {
+  width: 1em;
+  .el-icon {
+    padding: 0;
+    margin: 0;
   }
 }

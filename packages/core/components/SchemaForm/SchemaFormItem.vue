@@ -35,10 +35,7 @@
         const { component, ctl = true } = schema
         const { attrs = {} } = component
 
-        let modelValue: Record<string, any>
-        modelValue = ctl
-          ? { 'v-model': formModel.value[schema.field] }
-          : { modelValue: formModel.value[schema.field] }
+        let modelValue: Record<string, any> = { modelValue: formModel.value[schema.field] }
 
         return { ...attrs, ...modelValue }
       })
@@ -52,11 +49,20 @@
           ? schema.component?.renderComponent
           : getComponent(schema.component?.comp)
 
+        function handleInput() {
+          console.log('input')
+        }
+
+        function handleChange() {
+          console.log('change')
+        }
+
         return (
           // @ts-ignore
           <Comp
             class='vue3-form-item__component'
-            v-model={formModel.value[props.schema.field]}
+            onInput={handleInput}
+            onChange={handleChange}
             {...componentProps.value}
           />
         )

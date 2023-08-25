@@ -6,8 +6,6 @@ function initDefaultValue(item: Vue3FormItem) {
   } = item
 
   switch (comp) {
-    case 'input' || 'auto-complete':
-      return ''
     case 'input-number':
       return 0
     case 'date-picker':
@@ -28,6 +26,8 @@ function initDefaultValue(item: Vue3FormItem) {
       return false
     case 'radio':
       return false
+    default:
+      return ''
   }
 }
 
