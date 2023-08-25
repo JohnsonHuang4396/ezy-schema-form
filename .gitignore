@@ -7,3 +7,4 @@ packages/docs/.vitepress/cache
 
 auto-imports.d.ts
 components.d.ts
+packages/core/.vscode/settings.json
