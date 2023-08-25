@@ -11,11 +11,26 @@
       validate
     </el-button>
   </div>
+
+  <el-form v-if="false">
+    <el-form-item></el-form-item>
+    <el-input />
+    <el-input-number />
+    <el-autocomplete />
+    <el-cascader />
+    <el-date-picker />
+    <el-switch />
+
+    <el-checkbox />
+    <el-select>
+      <el-option />
+    </el-select>
+    <el-radio />
+  </el-form>
 </template>
 
 <script setup lang="ts">
-  import { SchemaForm } from '@vue3-form/core'
-  import { ElButton } from 'element-plus'
+  import SchemaForm from '@vue3-form/core/components/SchemaForm/SchemaForm.vue'
   import type { Vue3FormProps } from '@vue3-form/core/types'
 
   const schema = ref<Vue3FormProps>({
@@ -23,15 +38,36 @@
     schema: [
       {
         field: 'name',
+        ctl: false,
         label: '名称',
         defaultValue: 'hqh',
         rule: { required: true, message: '请输入名称', trigger: ['blur'] },
         component: {
           comp: 'input',
-          props: { type: 'textarea', maxlength: 100, disabled: false }
+          attrs: {
+            maxlength: 100,
+            disabled: false,
+            clearable: true
+          }
         }
       },
-      { field: 'age', label: '年龄', component: { comp: 'input-number' } }
+      { field: 'age', label: '年龄', component: { comp: 'input-number' } },
+      {
+        field: 'class',
+        label: '班级',
+        component: {
+          comp: 'select',
+          props: {
+            placeholder: '请选择班级',
+            options: [{ label: '1班', value: '1' }]
+          }
+        }
+      },
+      {
+        field: 'male',
+        label: '性别',
+        component: { comp: 'radio', prop: { label: '男' } }
+      }
     ]
   })
 

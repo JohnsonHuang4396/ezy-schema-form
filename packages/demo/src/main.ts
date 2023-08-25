@@ -9,7 +9,7 @@ import 'uno.css'
 
 const app = createApp(App)
 
-app.use(Vue3Form)
+// app.use(Vue3Form)
 
 installRouter(app)
 
