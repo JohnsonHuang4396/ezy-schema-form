@@ -1,4 +1,5 @@
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import dts from 'vite-plugin-dts'
 import vitePluginImp from 'vite-plugin-imp'
 import { defineConfig } from 'vite'
@@ -15,6 +16,7 @@ function formatEntryFileNames(name: string, extendName: 'mjs' | 'js') {
 export default defineConfig({
   plugins: [
     vue(),
+    vueJsx(),
     dts({
       entryRoot: './packages/core',
       outDir: ['./packages/core/es'],

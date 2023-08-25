@@ -25,13 +25,6 @@
   ],
   "author": "JohnsonHuang4396",
   "license": "MIT",
-  "files": [
-    "dist/*.js",
-    "types/*.d.ts"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": "https://github.com/JohnsonHuang4396/vue3-form",
   "homepage": "https://github.com/JohnsonHuang4396/vue3-form",
   "devDependencies": {
@@ -39,6 +32,7 @@
     "@commitlint/cli": "^17.7.0",
     "@commitlint/config-conventional": "^17.7.0",
     "@vitejs/plugin-vue": "^4.3.3",
+    "@vitejs/plugin-vue-jsx": "^3.0.2",
     "husky": "^8.0.3",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.2",
