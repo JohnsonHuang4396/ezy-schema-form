@@ -51,22 +51,55 @@
           }
         }
       },
-      { field: 'age', label: '年龄', component: { comp: 'input-number' } },
+
+      {
+        field: 'number',
+        label: '学号',
+        component: {
+          comp: 'auto-complete'
+        }
+      },
+      {
+        field: 'grade',
+        label: '年级',
+        component: {
+          comp: 'cascader',
+          attrs: { clearable: true }
+        }
+      },
       {
         field: 'class',
         label: '班级',
         component: {
           comp: 'select',
-          props: {
+          attrs: {
             placeholder: '请选择班级',
             options: [{ label: '1班', value: '1' }]
           }
         }
       },
       {
+        field: 'date',
+        label: '日期',
+        component: {
+          comp: 'date-picker',
+          attrs: { format: 'YYYY-MM-DD', valueFormat: 'YYYY-MM-DD' }
+        }
+      },
+      { field: 'age', label: '年龄', component: { comp: 'input-number' } },
+
+      {
         field: 'male',
         label: '性别',
-        component: { comp: 'radio', prop: { label: '男' } }
+        component: { comp: 'radio', attrs: { label: '男' } }
+      },
+
+      {
+        field: 'isHasLunch',
+        label: '吃饭了',
+        component: {
+          comp: 'switch'
+        }
       }
     ]
   })
