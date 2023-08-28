@@ -1,14 +1,12 @@
 import type { FormItemInstance, FormItemProps, FormItemRule } from 'element-plus'
 import type { Arrayable } from 'element-plus/es/utils'
-import type { GetInstance, FormItemComponents } from './'
-
-type FormItemFiled = string
+import type { GetInstance, FormItemComponents, CtlModelValue } from './'
 
 export type Vue3FormItem = {
-  field: FormItemFiled
-  ctl?: boolean
+  field: string
   defaultValue?: any
   component: FormItemComponents
   rule?: Arrayable<FormItemRule>
-} & Partial<FormItemProps> &
+} & CtlModelValue &
+  Partial<FormItemProps> &
   GetInstance<FormItemInstance>

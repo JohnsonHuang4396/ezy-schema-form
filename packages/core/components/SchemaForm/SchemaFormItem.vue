@@ -49,20 +49,10 @@
           ? schema.component?.renderComponent
           : getComponent(schema.component?.comp)
 
-        function handleInput() {
-          console.log('input')
-        }
-
-        function handleChange() {
-          console.log('change')
-        }
-
         return (
           // @ts-ignore
           <Comp
             class='vue3-form-item__component'
-            onInput={handleInput}
-            onChange={handleChange}
             {...componentProps.value}
           />
         )
