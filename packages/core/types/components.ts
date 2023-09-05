@@ -29,7 +29,8 @@ import type {
   GetInstance,
   SelectOptionsProps,
   SelectProps,
-  SelectEmits
+  SelectEmits,
+  SelectOptionsGroupProps
 } from 'types'
 import type { CSSProperties } from 'vue'
 
@@ -74,8 +75,8 @@ export type RadioConfig = {
 
 export type SelectConfig = {
   comp: 'select'
-  options: SelectOptionsProps[]
-} & FormCompPropsAntEmits<SelectProps, SelectEmits> &
+} & ({ type?: 'single'; options?: SelectOptionsProps[] } | { type?: 'group'; options?: SelectOptionsGroupProps[] }) &
+  FormCompPropsAntEmits<SelectProps, SelectEmits> &
   GetInstance<typeof ElSelect>
 
 export type SwitchConfig = {

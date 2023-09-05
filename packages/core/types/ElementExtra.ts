@@ -1,6 +1,6 @@
-import { Component } from 'vue'
+import type { Component } from 'vue'
 
-export interface DatePickerEmits {
+export type DatePickerEmits = {
   /**
    * @desc 用户确认选定的值时触发
    * @memberof DatePickerEmits
@@ -33,7 +33,7 @@ export interface DatePickerEmits {
   visibleChange: (visibility: boolean) => void
 }
 
-export interface SelectProps {
+export type SelectProps = {
   /**
    * @desc 选中项绑定值
    * @type {string}
@@ -274,12 +274,12 @@ export interface SelectProps {
   maxCollapseTags: number
 }
 
-export interface SelectEmits {
+export type SelectEmits = {
   /**
    * @desc 选中值发生变化时触发
    * @memberof SelectEmits
    */
-  change: (val: any) => void
+  change: (val: SelectProps['modelValue']) => void
   /**
    * @desc 下拉框出现/隐藏时触发
    * @memberof SelectEmits
@@ -289,7 +289,7 @@ export interface SelectEmits {
    * @desc 多选模式下移除tag时触发
    * @memberof SelectEmits
    */
-  removeTag: (val: any) => void
+  removeTag: (val: SelectProps['modelValue']) => void
   /**
    * @desc 可清空的单选模式下用户点击清空按钮时触发
    * @memberof SelectEmits
@@ -307,7 +307,7 @@ export interface SelectEmits {
   focus: (event: FocusEvent) => void
 }
 
-export interface SelectOptionsGroupProps {
+export type SelectOptionsGroupProps = {
   /**
    * @desc 分组的组名
    * @type {string}
@@ -329,7 +329,7 @@ export interface SelectOptionsGroupProps {
   options: SelectOptionsProps[]
 }
 
-export interface SelectOptionsProps {
+export type SelectOptionsProps = {
   /**
    * @desc 选项的值
    * @type {(string | number | boolean | object)}

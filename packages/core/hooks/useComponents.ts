@@ -6,9 +6,9 @@ import {
   ElInput,
   ElInputNumber,
   ElRadio,
-  ElSelect,
   ElSwitch
 } from 'element-plus'
+import FormSelect from '../components/SchemaForm/FormSelect.vue'
 import type { FormItemComponents } from 'types'
 import type { Component } from 'vue'
 
@@ -23,7 +23,7 @@ componentsMap.set('date-picker', ElDatePicker)
 componentsMap.set('input', ElInput)
 componentsMap.set('input-number', ElInputNumber)
 componentsMap.set('radio', ElRadio)
-componentsMap.set('select', ElSelect)
+componentsMap.set('select', FormSelect)
 componentsMap.set('switch', ElSwitch)
 
 export function useComponents() {
