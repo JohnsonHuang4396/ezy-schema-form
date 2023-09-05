@@ -4,6 +4,7 @@
   import { useComponents } from '../../hooks'
   import { useContext } from '../../hooks/useContext'
   import { VUE3_FORM_PROVIDE_KEY } from '../../constant'
+  import { upperFirstLetter } from '../../utils/common'
   import type { Vue3FormItem } from '../../types'
   import type { Ref, PropType } from 'vue'
 
@@ -30,24 +31,51 @@
     setup(props) {
       const formModel = inject(get(VUE3_FORM_PROVIDE_KEY)) as Ref<any>
 
+      function formatActions(actions: Record<string, any>) {
+        return Reflect.ownKeys(actions).reduce<Record<string, any>>((acc, key) => {
+          const action = actions[key as string]
+          acc[`on${upperFirstLetter(key as string)}`] = action
+          return acc
+        }, {})
+      }
+
+      function initCtlAction(ctl: boolean) {
+        const { schema } = props
+        const { updateModelValue, component } = schema
+        const { comp } = component
+
+        const event = comp === 'input' ? 'input' : 'change'
+        const onUpdate = `on${upperFirstLetter(event)}`
+
+        const updateEvent: Record<string, any> = {}
+
+        updateEvent[onUpdate] = ctl
+          ? function (val: any) {
+              formModel.value[schema.field] = val
+            }
+          : updateModelValue
+
+        return updateEvent
+      }
+
       const componentProps = computed(() => {
         const { schema } = props
         const { component, ctl = true } = schema
-        const { attrs = {} } = component
+        const { attrs = {}, actions = {} } = component
 
         let modelValue: Record<string, any> = { modelValue: formModel.value[schema.field] }
 
-        return { ...attrs, ...modelValue }
+        const on = { ...initCtlAction(ctl), ...formatActions(actions) }
+
+        return { ...attrs, ...on, ...modelValue }
       })
 
       const RenderComponent = () => {
         const { schema } = props
 
-        const isCustom = schema.component?.comp === 'custom'
+        const isCustom = schema.component?.comp === 'custom' || false
 
-        const Comp = isCustom
-          ? schema.component?.renderComponent
-          : getComponent(schema.component?.comp)
+        const Comp = isCustom ? schema.component?.renderComponent : getComponent(schema.component?.comp)
 
         return (
           // @ts-ignore

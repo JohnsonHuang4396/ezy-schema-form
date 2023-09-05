@@ -4,6 +4,7 @@ import type { FormCompPropsAntEmits } from './'
 
 export interface Vue3FormProps extends FormCompPropsAntEmits<FormProps> {
   classList?: string | string[]
+  formModel?: Record<string, any>
   schema: Vue3FormItem[]
 }
 
@@ -13,4 +14,5 @@ export interface Vue3FormConfig {
 
 export type Vue3FormEmits = {
   onValidate: [prop: FormItemProp, isValid: boolean, message: string]
+  'update:formModel': [model: Record<string, any>]
 }

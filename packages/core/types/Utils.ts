@@ -7,8 +7,8 @@ export type RenderComponent<T> = T extends { comp: 'custom' }
   : T & { renderComponent?: never }
 
 export type CtlModelValue =
-  | { ctl?: true; updateModelValue: (value: any) => void }
-  | { ctl?: false; updateModelValue?: never }
+  | { ctl?: true; updateModelValue?: never }
+  | { ctl?: false; updateModelValue?: (value: any) => void }
 
 export type CompPropsLimit<Comp> = Partial<OmitId<Comp>>
 

@@ -37,25 +37,20 @@
 
   const $emits = defineEmits<Vue3FormEmits>()
 
-  const formModel = ref<Record<string, any>>(createModel($props.config.schema))
+  const formModel = ref<Record<string, any>>($props.config.formModel ?? createModel($props.config.schema))
 
   const { get, set } = useContext()
   set(VUE3_FORM_PROVIDE_KEY)
   provide(get(VUE3_FORM_PROVIDE_KEY), formModel)
 
   const formRules = computed(() => {
-    return $props.config.schema.reduce(
-      (rule, item) => {
-        if (item.rule) rule[item.field] = item.rule
-        return rule
-      },
-      {} as unknown as Record<string, Arrayable<FormItemRule>>
-    )
+    return $props.config.schema.reduce<Record<string, Arrayable<FormItemRule>>>((rule, item) => {
+      if (item.rule) rule[item.field] = item.rule
+      return rule
+    }, {})
   })
 
-  const formAttrs = ref<Record<string, any>>({
-    ...$props.config.attrs
-  })
+  const formAttrs = ref<Record<string, any>>({ ...$props.config.attrs })
 
   function setAttrs(propAttrs: Pick<Vue3FormProps, 'attrs'>) {
     const { attrs = {} } = propAttrs
@@ -82,7 +77,6 @@
     () => $props.config.schema,
     () => {
       setSchema($props.config.schema)
-      formModel.value = createModel($props.config.schema)
     },
     { deep: true, immediate: true }
   )
@@ -96,10 +90,10 @@
 
   const vue3FormRef = ref<InstanceType<typeof ElForm>>()
 
-  async function validate(
-    cb?: FormValidateCallback
-  ): Promise<[boolean | undefined, unknown | undefined]> {
-    if (!vue3FormRef.value) return [undefined, new Error("Form didn't init yet!")]
+  const FormError = new Error("Form hasn't init yet!")
+
+  async function validate(cb?: FormValidateCallback): Promise<[boolean | undefined, unknown | undefined]> {
+    if (!vue3FormRef.value) return [undefined, FormError]
     try {
       let result: boolean
       if (cb) result = await vue3FormRef.value.validate(cb)
@@ -114,7 +108,7 @@
     props?: Arrayable<FormItemProp>,
     cb?: FormValidateCallback
   ): Promise<[boolean | undefined, unknown | undefined]> {
-    if (!vue3FormRef.value) return [undefined, new Error("Form didn't init yet!")]
+    if (!vue3FormRef.value) return [undefined, FormError]
     try {
       let result: boolean
       if (cb) result = await vue3FormRef.value.validateField(props, cb)
