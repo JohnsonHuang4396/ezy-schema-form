@@ -16,3 +16,7 @@ export type FormCompPropsAntEmits<Props = object, Actions = never> = {
   attrs?: CompPropsLimit<Props>
   actions?: Partial<Actions>
 }
+
+export type FormatEmits<T extends Record<string, (...args: any) => void>> = {
+  [K in keyof T]: T[K] extends (...args: any) => void ? [...Parameters<T[K]>] : never
+}
