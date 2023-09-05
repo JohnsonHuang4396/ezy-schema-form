@@ -1,9 +1,8 @@
 import type { Vue3FormItem } from '../types'
 
-function initDefaultValue(item: Vue3FormItem) {
-  const {
-    component: { comp }
-  } = item
+export function initDefaultValue(item: Vue3FormItem) {
+  const { component } = item
+  const { comp } = component
 
   switch (comp) {
     case 'input-number':
@@ -19,13 +18,13 @@ function initDefaultValue(item: Vue3FormItem) {
         second: '2-digit'
       }).format(new Date())
     case 'select':
-      return item.component.attrs?.multiple ? [] : ''
+      return component.attrs?.multiple ? [] : ''
     case 'switch':
       return false
     case 'checkbox':
-      return false
+      return ''
     case 'radio':
-      return false
+      return ''
     default:
       return ''
   }
@@ -33,13 +32,10 @@ function initDefaultValue(item: Vue3FormItem) {
 
 export function createModel(schema: Vue3FormItem[]) {
   if (!schema || !schema.length) return {}
-  return schema.reduce(
-    (model, item) => {
-      const field = item.field
-      const defaultValue = item.defaultValue
-      model[field] = defaultValue || initDefaultValue(item)
-      return model
-    },
-    {} as Record<string, any>
-  )
+  return schema.reduce<Record<string, any>>((model, item) => {
+    const field = item.field
+    const defaultValue = item.defaultValue
+    model[field] = defaultValue || initDefaultValue(item)
+    return model
+  }, {})
 }
