@@ -315,18 +315,18 @@ export type SelectOptionsGroupProps = {
    */
   label: string
   /**
+   * @desc 选项配置
+   * @type {SelectOptionsProps[]}
+   * @memberof SelectOptionsGroupProps
+   */
+  options: SelectOptionsProps[]
+  /**
    * @desc 是否将该分组下所有选项置为禁用
    * @default false
    * @type {boolean}
    * @memberof SelectOptionsGroupProps
    */
   disabled?: boolean
-  /**
-   * @desc 选项配置
-   * @type {SelectOptionsProps[]}
-   * @memberof SelectOptionsGroupProps
-   */
-  options: SelectOptionsProps[]
 }
 
 export type SelectOptionsProps = {

@@ -1,6 +1,6 @@
 <template>
   <el-select
-    v-bind="attrs"
+    v-bind="$props"
     @update:model-value="handleUpdateModelValue"
     @change="handleChange"
     @visible-change="handleVisibleChange"
@@ -36,11 +36,11 @@
 
 <script lang="ts" setup>
   import { ElSelect, ElOption, ElOptionGroup } from 'element-plus'
-  import { computed } from 'vue'
-  import type { SelectConfig } from '../../types/components'
-  import type { SelectProps, SelectEmits } from '../../types/ElementExtra'
+  import type { SelectProps, SelectEmits, SelectOptionsGroupProps, SelectOptionsProps } from '../../types/ElementExtra'
 
-  const $props = withDefaults(defineProps<SelectConfig>(), {
+  type Props = Partial<SelectProps> &
+    ({ type?: 'single'; options: SelectOptionsProps[] } | { type?: 'group'; options: SelectOptionsGroupProps[] })
+  const $props = withDefaults(defineProps<Props>(), {
     type: 'single',
     options: () => []
   })
@@ -55,11 +55,6 @@
     'update:modelValue': [val: SelectProps['modelValue']]
   }
   const $emits = defineEmits<FormSelectEmits>()
-
-  const attrs = computed(() => {
-    const { attrs } = $props
-    return { ...attrs }
-  })
 
   const handleUpdateModelValue: (...arg: any[]) => void = (val: SelectProps['modelValue']) => {
     $emits('update:modelValue', val)

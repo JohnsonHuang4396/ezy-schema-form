@@ -64,7 +64,7 @@
       const componentProps = computed(() => {
         const { schema } = props
         const { component, ctl = true } = schema
-        const { attrs = {}, actions = {} } = component
+        const { attrs = {}, actions = {}, ...rest } = component
 
         formModel.value[schema.field] ??= initDefaultValue(schema)
 
@@ -74,7 +74,7 @@
 
         const on = { ...initCtlAction(ctl), ...formatActions(actions) }
 
-        return { ...attrs, ...on, ...modelValue }
+        return { ...attrs, ...on, ...modelValue, ...rest }
       })
 
       const RenderComponent = () => {
@@ -83,6 +83,8 @@
         const isCustom = schema.component?.comp === 'custom' || false
 
         const Comp = isCustom ? schema.component?.renderComponent : getComponent(schema.component?.comp)
+
+        console.log('componentProps.value  :>>', componentProps.value)
 
         return (
           // @ts-ignore
