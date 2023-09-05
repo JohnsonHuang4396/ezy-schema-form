@@ -33,8 +33,11 @@
   import SchemaForm from '@vue3-form/core/components/SchemaForm/SchemaForm.vue'
   import type { Vue3FormProps } from '@vue3-form/core/types'
 
+  const formModel = ref({ name: 'jxy' })
+
   const schema = ref<Vue3FormProps>({
     classList: [],
+    formModel: formModel.value,
     schema: [
       {
         field: 'name',
@@ -49,6 +52,9 @@
             disabled: false,
             clearable: true
           }
+        },
+        updateModelValue(val: string) {
+          formModel.value.name = val
         }
       },
 
@@ -87,7 +93,6 @@
         }
       },
       { field: 'age', label: '年龄', component: { comp: 'input-number' } },
-
       {
         field: 'male',
         label: '性别',
