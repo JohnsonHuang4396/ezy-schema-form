@@ -23,7 +23,7 @@
 
     <el-checkbox />
     <el-select>
-      <el-option />
+      <el-option value="123" />
     </el-select>
     <el-radio />
   </el-form>
@@ -96,7 +96,7 @@
       {
         field: 'male',
         label: '性别',
-        component: { comp: 'radio', attrs: { label: '男' } }
+        component: { comp: 'radio', attrs: { label: '男', name: 'male' } }
       },
 
       {
