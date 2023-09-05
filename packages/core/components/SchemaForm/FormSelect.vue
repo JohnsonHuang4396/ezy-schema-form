@@ -36,10 +36,10 @@
 
 <script lang="ts" setup>
   import { ElSelect, ElOption, ElOptionGroup } from 'element-plus'
-  import type { SelectProps, SelectEmits, SelectOptionsGroupProps, SelectOptionsProps } from '../../types/ElementExtra'
+  import type { SelectProps, SelectEmits } from '../../types/ElementExtra'
+  import type { SelectOptionType } from 'types/components'
 
-  type Props = Partial<SelectProps> &
-    ({ type?: 'single'; options: SelectOptionsProps[] } | { type?: 'group'; options: SelectOptionsGroupProps[] })
+  type Props = Partial<SelectProps> & SelectOptionType
   const $props = withDefaults(defineProps<Props>(), {
     type: 'single',
     options: () => []

@@ -73,9 +73,14 @@ export type RadioConfig = {
 } & FormCompPropsAntEmits<RadioProps, RadioEmits> &
   GetInstance<RadioInstance>
 
+export type SelectOptionType =
+  | { type?: 'single'; options: SelectOptionsProps[] }
+  | { type?: 'group'; options: SelectOptionsGroupProps[] }
+
 export type SelectConfig = {
   comp: 'select'
-} & FormCompPropsAntEmits<SelectProps, SelectEmits> &
+} & SelectOptionType &
+  FormCompPropsAntEmits<SelectProps, SelectEmits> &
   GetInstance<typeof ElSelect>
 
 export type SwitchConfig = {
