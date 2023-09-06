@@ -1,4 +1,4 @@
-import { ElDatePicker, ElSelect } from 'element-plus'
+import { CheckboxGroupEmits, CheckboxGroupProps, ElDatePicker, ElSelect } from 'element-plus'
 import type {
   AutocompleteEmits,
   AutocompleteProps,
@@ -7,7 +7,6 @@ import type {
   CascaderEmits,
   CascaderInstance,
   CheckboxProps,
-  CheckboxEmits,
   CheckboxInstance,
   DatePickerProps,
   InputProps,
@@ -44,9 +43,14 @@ export type CascaderConfig = {
 } & FormCompPropsAntEmits<CascaderProps, CascaderEmits> &
   GetInstance<CascaderInstance>
 
+export type CheckboxOptions =
+  | { type?: 'default'; options?: Omit<CheckboxProps, 'modelValue'>[] }
+  | { type?: 'button'; options?: Omit<CheckboxProps, 'modelValue'>[] }
+
 export type CheckboxConfig = {
   comp: 'checkbox'
-} & FormCompPropsAntEmits<CheckboxProps, CheckboxEmits> &
+} & CheckboxOptions &
+  FormCompPropsAntEmits<CheckboxGroupProps, CheckboxGroupEmits> &
   GetInstance<CheckboxInstance>
 
 export type DatePickerConfig = {
@@ -54,7 +58,7 @@ export type DatePickerConfig = {
 } & FormCompPropsAntEmits<DatePickerProps, DatePickerEmits> &
   GetInstance<InstanceType<typeof ElDatePicker>>
 
-interface InputExtendProps extends Omit<InputProps, 'inputStyle'> {
+export interface InputExtendProps extends Omit<InputProps, 'inputStyle'> {
   inputStyle: CSSProperties | CSSProperties[] | string[]
 }
 
