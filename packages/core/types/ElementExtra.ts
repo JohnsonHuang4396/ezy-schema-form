@@ -231,12 +231,6 @@ export type SelectProps = {
    */
   suffixIcon: string | Component
   /**
-   * @desc 下拉菜单显示/消失时后缀图标的动画
-   * @type {boolean}
-   * @memberof SelectProps
-   */
-  suffixTransition: boolean
-  /**
    * @desc 标签类型
    * @type {(success | info | warning | danger)}
    * @memberof SelectProps
