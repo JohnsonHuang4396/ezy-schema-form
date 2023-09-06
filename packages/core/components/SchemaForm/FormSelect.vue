@@ -9,7 +9,7 @@
     @blur="handleBlur"
     @focus="handleFocus"
   >
-    <template v-if="type === 'single'">
+    <template v-if="type === 'default'">
       <el-option
         v-for="(option, index) in options"
         :key="`${option.value}-${index}`"
@@ -41,7 +41,7 @@
 
   type Props = Partial<SelectProps> & SelectOptionType
   const $props = withDefaults(defineProps<Props>(), {
-    type: 'single',
+    type: 'default',
     options: () => []
   })
 
