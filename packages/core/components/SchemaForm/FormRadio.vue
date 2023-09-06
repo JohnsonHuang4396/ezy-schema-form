@@ -26,17 +26,17 @@
   import type { RadioGroupProps, RadioGroupEmits } from 'element-plus'
   import type { RadioOptions } from '../../types/components'
 
-  type Props = RadioGroupProps & RadioOptions
+  type Props = Partial<RadioGroupProps> & RadioOptions
   const $props = withDefaults(defineProps<Props>(), {
     type: 'default',
     options: () => []
   })
 
-  type Emits = {
+  type RadioEmits = {
     'update:modelValue': [val: string | number | boolean]
     change: [val: string | number | boolean]
   }
-  const $emits = defineEmits<Emits>()
+  const $emits = defineEmits<RadioEmits>()
 
   const handleUpdateModelValue: RadioGroupEmits['update:modelValue'] = val => {
     $emits('update:modelValue', val)
