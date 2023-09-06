@@ -1,14 +1,7 @@
-import {
-  ElAutocomplete,
-  ElCascader,
-  ElCheckbox,
-  ElDatePicker,
-  ElInput,
-  ElInputNumber,
-  ElRadio,
-  ElSwitch
-} from 'element-plus'
+import { ElAutocomplete, ElCascader, ElDatePicker, ElInput, ElInputNumber, ElSwitch } from 'element-plus'
 import FormSelect from '../components/SchemaForm/FormSelect.vue'
+import FormCheckbox from '../components/SchemaForm/FormCheckbox.vue'
+import FormRadio from '../components/SchemaForm/FormRadio.vue'
 import type { FormItemComponents } from 'types'
 import type { Component } from 'vue'
 
@@ -18,11 +11,11 @@ const componentsMap: Map<Comp | string, Component> = new Map()
 
 componentsMap.set('auto-complete', ElAutocomplete)
 componentsMap.set('cascader', ElCascader)
-componentsMap.set('checkbox', ElCheckbox)
+componentsMap.set('checkbox', FormCheckbox)
 componentsMap.set('date-picker', ElDatePicker)
 componentsMap.set('input', ElInput)
 componentsMap.set('input-number', ElInputNumber)
-componentsMap.set('radio', ElRadio)
+componentsMap.set('radio', FormRadio)
 componentsMap.set('select', FormSelect)
 componentsMap.set('switch', ElSwitch)
 

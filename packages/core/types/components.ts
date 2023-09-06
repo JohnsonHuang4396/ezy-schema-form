@@ -18,6 +18,9 @@ import type {
   RadioEmits,
   RadioInstance,
   RadioProps,
+  RadioGroupProps,
+  RadioGroupEmits,
+  RadioGroupInstance,
   SwitchProps,
   SwitchEmits,
   SwitchInstance
@@ -72,14 +75,17 @@ export type InputNumberConfig = {
 } & FormCompPropsAntEmits<InputNumberProps, InputNumberEmits> &
   GetInstance<InputNumberInstance>
 
+export type RadioOptions = { type?: 'default'; options?: RadioProps[] } | { type?: 'button'; options?: RadioProps[] }
+
 export type RadioConfig = {
   comp: 'radio'
-} & FormCompPropsAntEmits<RadioProps, RadioEmits> &
-  GetInstance<RadioInstance>
+} & RadioOptions &
+  FormCompPropsAntEmits<RadioGroupProps, RadioGroupEmits> &
+  GetInstance<RadioGroupInstance>
 
 export type SelectOptionType =
-  | { type?: 'single'; options: SelectOptionsProps[] }
-  | { type?: 'group'; options: SelectOptionsGroupProps[] }
+  | { type?: 'default'; options: SelectOptionsProps[] }
+  | { type?: 'options'; options: SelectOptionsGroupProps[] }
 
 export type SelectConfig = {
   comp: 'select'
