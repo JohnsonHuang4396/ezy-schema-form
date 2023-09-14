@@ -36,7 +36,7 @@
     "husky": "^8.0.3",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
-    "sass": "^1.66.1",
+    "sass": "^1.67.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.3",

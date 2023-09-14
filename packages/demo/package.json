@@ -34,10 +34,10 @@
     "pinia-plugin-persistedstate": "^3.2.0",
     "prettier": "*",
     "sass": "*",
-    "typescript": "*",
+    "typescript": "5.2.2",
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
     "vite": "*",
-    "vue-tsc": "^1.8.8"
+    "vue-tsc": "^1.8.11"
   }
 }
