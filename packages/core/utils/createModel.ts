@@ -22,7 +22,7 @@ export function initDefaultValue(item: Vue3FormItem) {
     case 'switch':
       return false
     case 'checkbox':
-      return ''
+      return []
     case 'radio':
       return ''
     default:

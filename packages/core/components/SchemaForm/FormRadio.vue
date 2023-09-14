@@ -11,7 +11,7 @@
         v-bind="option"
       />
     </template>
-    <template v-else>
+    <template v-else-if="type === 'button'">
       <el-radio-button
         v-for="(option, index) in options"
         :key="`${option.name}-${index}`"

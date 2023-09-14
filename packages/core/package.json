@@ -12,7 +12,7 @@
   "author": "JohnsonHuang4396",
   "license": "MIT",
   "peerDependencies": {
-    "element-plus": "^2.3.12"
+    "element-plus": "^2.3.14"
   },
   "dependencies": {
     "vue": "*"

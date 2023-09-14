@@ -15,8 +15,6 @@ import type {
   InputNumberProps,
   InputNumberEmits,
   InputNumberInstance,
-  RadioEmits,
-  RadioInstance,
   RadioProps,
   RadioGroupProps,
   RadioGroupEmits,

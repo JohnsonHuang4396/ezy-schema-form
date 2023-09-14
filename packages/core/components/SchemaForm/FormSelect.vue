@@ -17,7 +17,7 @@
         :label="option.label"
       />
     </template>
-    <template v-else>
+    <template v-else-if="type === 'options'">
       <el-option-group
         v-for="(group, index) in options"
         :key="`${group.label}-${index}`"
