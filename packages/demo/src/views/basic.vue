@@ -22,10 +22,14 @@
     <el-switch />
 
     <el-checkbox />
+    <el-checkbox-group />
+    <el-checkbox-button />
     <el-select>
       <el-option value="123" />
     </el-select>
     <el-radio />
+    <el-radio-group />
+    <el-radio-button />
   </el-form>
 </template>
 
@@ -62,7 +66,8 @@
         field: 'number',
         label: '学号',
         component: {
-          comp: 'auto-complete'
+          comp: 'auto-complete',
+          attrs: {}
         }
       },
       {
@@ -96,9 +101,23 @@
       {
         field: 'male',
         label: '性别',
-        component: { comp: 'radio', attrs: { label: '男', name: 'male' } }
+        component: {
+          comp: 'radio',
+          type: 'button',
+          options: [{ label: '男', name: 'male' }]
+        }
       },
-
+      {
+        field: 'food',
+        label: '想吃的',
+        component: {
+          comp: 'checkbox',
+          options: [
+            { label: '苹果', name: 'apple' },
+            { label: '凤梨', name: 'pineapple' }
+          ]
+        }
+      },
       {
         field: 'isHasLunch',
         label: '吃饭了',
