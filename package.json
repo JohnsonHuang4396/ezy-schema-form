@@ -4,10 +4,8 @@
   "type": "module",
   "description": "A data-drive form base on Vue3 and Element Plus",
   "scripts": {
-    "build": "vite build",
-    "build:core": "gulp -f ./scripts/rebuild-dist.js & pnpm build",
-    "rebuild:core": "pnpm remove-dist & pnpm build & pnpm insert-style",
-    "rebuild:watch": "nodemon --exec \"pnpm remove-dist & pnpm build & pnpm insert-style\" --config \"./nodemon.json\"",
+    "build": "pnpm remove-dist & vite build & pnpm insert-style",
+    "build:watch": "nodemon --exec \"pnpm remove-dist & pnpm build & pnpm insert-style\" --config \"./nodemon.json\"",
     "remove-dist": "node ./scripts/remove-dist.js",
     "insert-style": "node ./scripts/insert-style.js",
     "ac": "node ./scripts/auto-commit.js",
@@ -38,6 +36,7 @@
     "prettier": "^3.0.3",
     "sass": "^1.67.0",
     "typescript": "^5.2.2",
+    "unplugin-element-plus": "^0.8.0",
     "vite": "^4.4.9",
     "vite-plugin-dts": "^3.5.3",
     "vite-plugin-imp": "^2.4.0"

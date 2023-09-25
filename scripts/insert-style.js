@@ -10,7 +10,7 @@ function insertESStyle(path) {
       return
     }
 
-    const updatedData = `import "./index.css";\n${data}`
+    const updatedData = `import "./style.css";\n${data}`
 
     // 将更新后的内容写回文件
     fs.writeFile(path, updatedData, 'utf-8', writeErr => {
