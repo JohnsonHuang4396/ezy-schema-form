@@ -18,8 +18,8 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@vue3-form/core": "workspace:*",
     "@vitejs/plugin-vue-jsx": "*",
+    "@vue3-form/core": "workspace:*",
     "@vueuse/core": "^10.4.1",
     "axios": "^1.5.0",
     "pinia": "^2.1.6",
