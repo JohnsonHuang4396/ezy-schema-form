@@ -1,5 +1,5 @@
 {
-  "name": "@vue3-form/core",
+  "name": "@vue3-schema-form/core",
   "type": "module",
   "main": "es/index.mjs",
   "module": "es/index.mjs",

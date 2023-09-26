@@ -1,5 +1,5 @@
 {
-  "name": "vue3-form",
+  "name": "vue3-schema-form",
   "version": "0.0.0",
   "type": "module",
   "description": "A data-drive form base on Vue3 and Element Plus",
