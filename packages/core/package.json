@@ -1,7 +1,19 @@
 {
   "name": "@vue3-form/core",
   "type": "module",
-  "version": "2.0.2",
+  "main": "es/index.mjs",
+  "module": "es/index.mjs",
+  "types": "es/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.mjs"
+    }
+  },
+  "files": [
+    "es"
+  ],
+  "version": "1.0.0",
   "description": "A data-drive form base on Vue3 and Element Plus",
   "keywords": [
     "vue",
