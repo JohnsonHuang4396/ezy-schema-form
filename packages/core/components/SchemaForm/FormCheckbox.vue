@@ -22,7 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ElCheckbox, ElCheckboxGroup, ElCheckboxButton } from 'element-plus'
   import type { CheckboxGroupProps, CheckboxGroupEmits, CheckboxValueType, CheckboxGroupValueType } from 'element-plus'
   import type { CheckboxOptions } from '../../types/components'
 

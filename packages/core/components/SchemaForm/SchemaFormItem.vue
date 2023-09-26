@@ -84,8 +84,6 @@
 
         const Comp = isCustom ? schema.component?.renderComponent : getComponent(schema.component?.comp)
 
-        console.log('componentProps  :>>', componentProps.value)
-
         return (
           // @ts-ignore
           <Comp

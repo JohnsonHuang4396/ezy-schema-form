@@ -34,7 +34,6 @@
 </template>
 
 <script setup lang="ts">
-  import { SchemaForm } from '@vue3-form/core'
   import type { Vue3FormProps } from '@vue3-form/core/types'
 
   const formModel = ref({ name: 'jxy' })
@@ -89,7 +88,6 @@
           formModel.value.name = val
         }
       },
-
       {
         field: 'number',
         label: '学号',
@@ -167,7 +165,7 @@
     ]
   })
 
-  const schemaFormRef = ref<InstanceType<typeof SchemaForm>>()
+  const schemaFormRef = ref<InstanceType<any>>()
 
   async function handleValidate() {
     if (!schemaFormRef.value) return

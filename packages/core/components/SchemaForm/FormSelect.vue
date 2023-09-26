@@ -35,14 +35,14 @@
 </template>
 
 <script lang="ts" setup>
-  import { ElSelect, ElOption, ElOptionGroup } from 'element-plus'
   import type { SelectProps, SelectEmits } from '../../types/ElementExtra'
   import type { SelectOptionType } from '../../types/components'
 
   type Props = Partial<SelectProps> & SelectOptionType
   const $props = withDefaults(defineProps<Props>(), {
     type: 'default',
-    options: () => []
+    options: () => [],
+    placement: 'bottom'
   })
 
   type FormSelectEmits = {

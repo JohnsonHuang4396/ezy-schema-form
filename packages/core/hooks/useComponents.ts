@@ -5,18 +5,25 @@ import FormRadio from '../components/SchemaForm/FormRadio.vue'
 import type { FormItemComponents } from 'types'
 import type { Component } from 'vue'
 
+import 'element-plus/es/components/autocomplete/style/index'
+import 'element-plus/es/components/cascader/style/index'
+import 'element-plus/es/components/switch/style/index'
+import 'element-plus/es/components/date-picker/style/index'
+import 'element-plus/es/components/input/style/index'
+import 'element-plus/es/components/input-number/style/index'
+
 type Comp = FormItemComponents['comp']
 
 const componentsMap: Map<Comp | string, Component> = new Map()
 
+componentsMap.set('radio', FormRadio)
+componentsMap.set('select', FormSelect)
+componentsMap.set('checkbox', FormCheckbox)
 componentsMap.set('auto-complete', ElAutocomplete)
 componentsMap.set('cascader', ElCascader)
-componentsMap.set('checkbox', FormCheckbox)
 componentsMap.set('date-picker', ElDatePicker)
 componentsMap.set('input', ElInput)
 componentsMap.set('input-number', ElInputNumber)
-componentsMap.set('radio', FormRadio)
-componentsMap.set('select', FormSelect)
 componentsMap.set('switch', ElSwitch)
 
 export function useComponents() {

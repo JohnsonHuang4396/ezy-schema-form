@@ -22,7 +22,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { ElRadio, ElRadioButton, ElRadioGroup } from 'element-plus'
   import type { RadioGroupProps, RadioGroupEmits } from 'element-plus'
   import type { RadioOptions } from '../../types/components'
 
