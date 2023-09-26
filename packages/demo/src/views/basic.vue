@@ -15,8 +15,8 @@
 
 <script setup lang="ts">
   import { ElMessage } from 'element-plus'
-  import { SchemaForm } from '@ezy-schema-form/core'
-  import type { Vue3FormProps } from '@ezy-schema-form/core/types'
+  import { SchemaForm } from 'ezy-schema-form'
+  import type { Vue3FormProps } from 'ezy-schema-form/types'
 
   const formModel = ref({ name: 'jxy' })
 

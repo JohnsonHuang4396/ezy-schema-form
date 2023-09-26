@@ -1,4 +1,4 @@
-<center><h1>Vue3-form</h1></center>
+<center><h1>ezy-schema-form</h1></center>
 
 > A data-drive form base on Vue3 and Element Plus
 

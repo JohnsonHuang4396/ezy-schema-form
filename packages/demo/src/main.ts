@@ -1,6 +1,6 @@
 import App from './App.vue'
 import installRouter from './router'
-import Vue3Form from '@v3-schema-form/core'
+import Vue3Form from 'ezy-schema-form'
 import { createApp } from 'vue'
 
 import 'element-plus/theme-chalk/dark/css-vars.css'
