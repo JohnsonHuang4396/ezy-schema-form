@@ -19,7 +19,6 @@
 
 <script lang="ts" setup>
   import SchemaFormItem from './SchemaFormItem.vue'
-  import { computed, provide, ref, watch } from 'vue'
   import { createModel } from '../../utils'
   import { useContext } from '../../hooks/useContext'
   import { VUE3_FORM_DEFAULT_PROPS, VUE3_FORM_PROVIDE_KEY } from '../../constant'

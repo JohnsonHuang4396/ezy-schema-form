@@ -18,6 +18,14 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
     "lib": ["ESNext", "DOM"]
   },
-  "include": ["./**/*.ts", "./**/*.d.ts", "./**/*.tsx", "./**/*.vue", "./global.d.ts", "./types/components.d.ts"],
+  "include": [
+    "./**/*.ts",
+    "./**/*.d.ts",
+    "./**/*.tsx",
+    "./**/*.vue",
+    "./global.d.ts",
+    "./types/components.d.ts",
+    "./types/auto-imports.d.ts"
+  ],
   "exclude": ["es"]
 }

@@ -2,6 +2,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import dts from 'vite-plugin-dts'
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { defineConfig } from 'vite'
 
@@ -32,6 +33,33 @@ export default defineConfig({
         }
       ],
       resolvers: [ElementPlusResolver()]
+    }),
+    AutoImport({
+      dts: './packages/core/types/auto-imports.d.ts',
+      imports: [
+        'vue',
+        {
+          'element-plus': [
+            'ElAutocomplete',
+            'ElCascader',
+            'ElDatePicker',
+            'ElInput',
+            'ElInputNumber',
+            'ElSwitch',
+            'ElForm',
+            'ElFormItem',
+            'ElRadio',
+            'ElRadioButton',
+            'ElRadioGroup',
+            'ElCheckbox',
+            'ElCheckboxButton',
+            'ElCheckboxGroup',
+            'ElSelect',
+            'ElSelectGroup',
+            'ElOption'
+          ]
+        }
+      ]
     })
   ],
   build: {

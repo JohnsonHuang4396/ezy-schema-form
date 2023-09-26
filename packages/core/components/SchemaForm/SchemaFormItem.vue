@@ -1,5 +1,4 @@
 <script lang="tsx">
-  import { defineComponent, inject, computed } from 'vue'
   import { ElFormItem } from 'element-plus'
   import { useComponents } from '../../hooks'
   import { useContext } from '../../hooks/useContext'
