@@ -11,30 +11,12 @@
       validate
     </el-button>
   </div>
-
-  <!-- <el-form v-if="false">
-    <el-form-item></el-form-item>
-    <el-input />
-    <el-input-number />
-    <el-autocomplete />
-    <el-cascader />
-    <el-date-picker />
-    <el-switch />
-
-    <el-checkbox />
-    <el-checkbox-group />
-    <el-checkbox-button />
-    <el-select>
-      <el-option value="123" />
-    </el-select>
-    <el-radio />
-    <el-radio-group />
-    <el-radio-button />
-  </el-form> -->
 </template>
 
 <script setup lang="ts">
+  import { SchemaForm } from '@vue3-form/core'
   import type { Vue3FormProps } from '@vue3-form/core/types'
+  import { ElMessage } from 'element-plus'
 
   const formModel = ref({ name: 'jxy' })
 
@@ -165,13 +147,15 @@
     ]
   })
 
-  const schemaFormRef = ref<InstanceType<any>>()
+  const schemaFormRef = ref<InstanceType<typeof SchemaForm>>()
 
   async function handleValidate() {
     if (!schemaFormRef.value) return
 
     const [, error] = await schemaFormRef.value.validate()
     if (error) return
+
+    ElMessage.success('校验成功!')
   }
 
   onMounted(() => {

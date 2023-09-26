@@ -4,6 +4,7 @@ import Vue3Form from '@vue3-form/core'
 import { createApp } from 'vue'
 
 import 'element-plus/theme-chalk/dark/css-vars.css'
+import 'element-plus/es/components/message/style/css'
 import './assets/styles/style.css'
 import 'uno.css'
 
