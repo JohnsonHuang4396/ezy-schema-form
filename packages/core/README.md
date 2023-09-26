@@ -33,12 +33,11 @@ app.mount('#app')
   />
 </template>
 
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
   import { ref } from 'vue'
   import type { Vue3FormProps } from 'ezy-schema-form'
+
+  const formModel = ref({})
 
   const schema = ref<Vue3FormProps>({
     classList: [],
