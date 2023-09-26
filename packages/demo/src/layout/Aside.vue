@@ -62,11 +62,8 @@
 </template>
 
 <script lang="ts" setup>
-  import {
-    SkillLevelBasic,
-    SkillLevelIntermediate,
-    SkillLevelAdvanced
-  } from '@vicons/carbon'
+  import { Document } from '@vicons/carbon'
+  import routes from '@/router/modules/home'
 
   const route = useRoute()
 
@@ -74,7 +71,7 @@
 
   const { isCollapsed } = storeToRefs(globalStore)
 
-  type Icon = typeof SkillLevelBasic
+  type Icon = typeof Document
 
   interface Menu {
     icon: string | Icon
@@ -83,23 +80,18 @@
     subs?: Menu[]
   }
 
-  const items: Menu[] = [
-    {
-      icon: SkillLevelBasic,
-      index: '/basic',
-      title: '基本使用'
-    },
-    {
-      icon: SkillLevelIntermediate,
-      index: '/total',
-      title: '完整表单'
-    },
-    {
-      icon: SkillLevelAdvanced,
-      index: '/advance',
-      title: '进阶使用'
-    }
-  ]
+  const items = computed(() => {
+    return routes.reduce<Menu[]>((list, route) => {
+      if (!route.meta?.isHome) {
+        list.push({
+          icon: (route.meta?.icon as Icon) || Document,
+          index: route.path,
+          title: (route.meta?.title as string) || ''
+        })
+      }
+      return list
+    }, [])
+  })
 
   const onRoutes = computed(() => {
     return route.path

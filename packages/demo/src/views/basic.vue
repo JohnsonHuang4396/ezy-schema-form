@@ -10,12 +10,14 @@
     >
       validate
     </el-button>
+    是否禁用input: <el-switch v-model="isDisabledInput" />
+    <div>{{ formModel }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { ElMessage } from 'element-plus'
-  import { SchemaForm } from 'ezy-schema-form'
+  import SchemaForm from '../../../core/components/SchemaForm/SchemaForm.vue'
   import type { Vue3FormProps } from 'ezy-schema-form/types'
 
   const formModel = ref({ name: 'jxy' })
@@ -48,9 +50,14 @@
     }
   }
 
+  const isDisabledInput = ref<boolean>(false)
+
   const schema = ref<Vue3FormProps>({
     classList: [],
     formModel: formModel.value,
+    attrs: {
+      disabled: isDisabledInput
+    },
     schema: [
       {
         field: 'name',
@@ -62,7 +69,6 @@
           comp: 'input',
           attrs: {
             maxlength: 100,
-            disabled: false,
             clearable: true
           }
         },
@@ -71,8 +77,8 @@
         }
       },
       {
-        field: 'number',
-        label: '学号',
+        field: 'discipline',
+        label: '学科',
         component: {
           comp: 'auto-complete',
           attrs: {
@@ -94,7 +100,18 @@
         label: '年级',
         component: {
           comp: 'cascader',
-          attrs: { clearable: true }
+          attrs: {
+            clearable: true,
+            props: { checkStrictly: true },
+            options: [
+              { value: 'first-grade', label: '一年级' },
+              {
+                value: 'hight-grade',
+                label: '高年级',
+                children: [{ value: 'high-grade-one', label: '高一' }]
+              }
+            ]
+          }
         }
       },
       {

@@ -2,7 +2,11 @@ import type { FormItemProp, FormProps } from 'element-plus'
 import type { Vue3FormItem } from './FormItem'
 import type { FormCompPropsAntEmits } from './'
 
-export interface Vue3FormProps extends FormCompPropsAntEmits<FormProps> {
+export interface EzySchemaFormProps extends Omit<FormProps, 'disabled'> {
+  disabled: Ref<boolean> | boolean
+}
+
+export interface Vue3FormProps extends FormCompPropsAntEmits<EzySchemaFormProps> {
   classList?: string | string[]
   formModel?: Record<string, any>
   schema: Vue3FormItem[]

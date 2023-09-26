@@ -67,6 +67,9 @@ importers:
         specifier: '*'
         version: 3.3.4
     devDependencies:
+      prettier:
+        specifier: '*'
+        version: 3.0.3
       sass:
         specifier: '*'
         version: 1.64.0
