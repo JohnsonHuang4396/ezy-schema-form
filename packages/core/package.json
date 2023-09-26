@@ -13,7 +13,7 @@
   "files": [
     "es"
   ],
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A data-drive form base on Vue3 and Element Plus",
   "keywords": [
     "vue",

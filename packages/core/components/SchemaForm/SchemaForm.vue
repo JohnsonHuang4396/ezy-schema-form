@@ -48,8 +48,7 @@
   const $emits = defineEmits<Vue3FormEmits>()
 
   function checkIsUsingSlot(key: string) {
-    const list = Reflect.ownKeys($slots)
-    return list.includes(key)
+    return Object.hasOwn($slots, key)
   }
 
   const formModel = ref<Record<string, any>>($props.config.formModel ?? createModel($props.config.schema))
