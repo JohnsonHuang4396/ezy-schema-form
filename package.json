@@ -1,5 +1,5 @@
 {
-  "name": "vue3-schema-form",
+  "name": "ezy-schema-form",
   "version": "0.0.0",
   "type": "module",
   "description": "A data-drive form base on Vue3 and Element Plus",
@@ -21,7 +21,7 @@
     "Element Plus",
     "form"
   ],
-  "author": "JohnsonHuang4396",
+  "author": "johnson4396",
   "license": "MIT",
   "repository": "https://github.com/JohnsonHuang4396/vue3-form",
   "homepage": "https://github.com/JohnsonHuang4396/vue3-form",

@@ -79,12 +79,12 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.1.0
         version: 2.1.0(vue@3.3.4)
+      '@ezy-schema-form/core':
+        specifier: workspace:*
+        version: link:../core
       '@vitejs/plugin-vue-jsx':
         specifier: '*'
         version: 3.0.2(vite@4.4.9)(vue@3.3.4)
-      '@vue3-form/core':
-        specifier: workspace:*
-        version: link:../core
       '@vueuse/core':
         specifier: ^10.4.1
         version: 10.4.1(vue@3.3.4)

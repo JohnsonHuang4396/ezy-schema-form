@@ -1,5 +1,5 @@
 {
-  "name": "@vue3-form/demo",
+  "name": "ezy-schema-form/demo",
   "version": "3.0.0",
   "type": "module",
   "keywords": [
@@ -8,6 +8,7 @@
     "scaffold",
     "generator"
   ],
+  "author": "johnson4396",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
@@ -19,7 +20,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "@vitejs/plugin-vue-jsx": "*",
-    "@vue3-form/core": "workspace:*",
+    "@ezy-schema-form/core": "workspace:*",
     "@vueuse/core": "^10.4.1",
     "axios": "^1.5.0",
     "pinia": "^2.1.6",

@@ -1,5 +1,5 @@
 {
-  "name": "@vue3-schema-form/core",
+  "name": "ezy-schema-form",
   "type": "module",
   "main": "es/index.mjs",
   "module": "es/index.mjs",
@@ -22,7 +22,7 @@
     "Element Plus",
     "form"
   ],
-  "author": "JohnsonHuang4396",
+  "author": "johnson4396",
   "license": "MIT",
   "peerDependencies": {
     "element-plus": "^2.3.14"

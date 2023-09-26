@@ -1,5 +1,5 @@
 {
-  "name": "@vue3-form/doc",
+  "name": "ezy-schema-form/doc",
   "version": "2.0.0",
   "description": "Handbook for vue3-form",
   "main": "index.ts",
@@ -13,7 +13,7 @@
     "vuejs",
     "form"
   ],
-  "author": "JohnsonHuang4396",
+  "author": "johnson4396",
   "license": "ISC",
   "devDependencies": {
     "vitepress": "1.0.0-beta.5",
