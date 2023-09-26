@@ -1,3 +1,4 @@
+import type { Ref } from 'vue'
 import type { FormItemProp, FormProps } from 'element-plus'
 import type { Vue3FormItem } from './FormItem'
 import type { FormCompPropsAntEmits } from './'
