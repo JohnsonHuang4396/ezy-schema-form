@@ -17,6 +17,7 @@
 
   export interface SchemaFormItemProps {
     schema: Vue3FormItem
+    isUsingSlot: boolean
   }
 
   export default defineComponent({
@@ -25,10 +26,14 @@
       schema: {
         type: Object as PropType<SchemaFormItemProps['schema']>,
         default: () => {}
+      },
+      isUsingSlot: {
+        type: Boolean,
+        default: false
       }
     },
     components: { ElFormItem, ...formItemComponents },
-    setup(props) {
+    setup(props, { slots }) {
       const formModel = inject(get(VUE3_FORM_PROVIDE_KEY)) as Ref<any>
 
       /**
@@ -47,7 +52,7 @@
        */
       function initCtlAction(ctl: boolean) {
         const { schema } = props
-        const { updateModelValue, component } = schema
+        const { updateModelValue } = schema
 
         const updateEvent: Record<string, any> = {}
 
@@ -77,11 +82,9 @@
       })
 
       const RenderComponent = () => {
-        const { schema } = props
+        const { schema, isUsingSlot } = props
 
-        const isCustom = schema.component?.comp === 'custom' || false
-
-        const Comp = isCustom ? schema.component?.renderComponent : getComponent(schema.component?.comp)
+        const Comp = isUsingSlot ? () => slots[schema.field]?.() : getComponent(schema.component?.comp)
 
         return (
           // @ts-ignore

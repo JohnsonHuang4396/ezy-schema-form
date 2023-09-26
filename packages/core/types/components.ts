@@ -95,8 +95,3 @@ export type SwitchConfig = {
   comp: 'switch'
 } & FormCompPropsAntEmits<SwitchProps, SwitchEmits> &
   GetInstance<SwitchInstance>
-
-export type CustomConfig = {
-  comp: 'custom'
-} & FormCompPropsAntEmits<Record<string, any>, Record<string, (...vars: any[]) => void>> &
-  GetInstance

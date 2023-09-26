@@ -12,7 +12,17 @@
       v-for="(item, index) in schema"
       :key="`${item.field}-${index}`"
     >
-      <SchemaFormItem :schema="item" />
+      <SchemaFormItem
+        :schema="item"
+        :is-using-slot="checkIsUsingSlot(item.field)"
+      >
+        <template #[item.field]>
+          <slot
+            :name="item.field"
+            :data="item"
+          />
+        </template>
+      </SchemaFormItem>
     </template>
   </el-form>
 </template>
@@ -28,12 +38,19 @@
 
   import './style/index.scss'
 
+  const $slots = useSlots()
+
   interface Props extends Vue3FormConfig {}
   const $props = withDefaults(defineProps<Props>(), {
     config: () => VUE3_FORM_DEFAULT_PROPS
   })
 
   const $emits = defineEmits<Vue3FormEmits>()
+
+  function checkIsUsingSlot(key: string) {
+    const list = Reflect.ownKeys($slots)
+    return list.includes(key)
+  }
 
   const formModel = ref<Record<string, any>>($props.config.formModel ?? createModel($props.config.schema))
 
@@ -146,5 +163,3 @@
     setSchema
   })
 </script>
-
-<style lang="scss" scoped></style>

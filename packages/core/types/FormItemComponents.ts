@@ -2,7 +2,6 @@ import type {
   AutoCompleteConfig,
   CascaderConfig,
   CheckboxConfig,
-  CustomConfig,
   DatePickerConfig,
   InputConfig,
   InputNumberConfig,
@@ -10,7 +9,6 @@ import type {
   SelectConfig,
   SwitchConfig
 } from './components'
-import type { RenderComponent } from './Utils'
 
 type ComponentConfig =
   | AutoCompleteConfig
@@ -22,6 +20,5 @@ type ComponentConfig =
   | RadioConfig
   | SelectConfig
   | SwitchConfig
-  | CustomConfig
 
-export type FormItemComponents = RenderComponent<ComponentConfig>
+export type FormItemComponents = ComponentConfig

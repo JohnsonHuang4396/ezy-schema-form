@@ -1,10 +1,4 @@
-import type { Component } from 'vue'
-
 export type OmitId<T> = Omit<T, 'id'>
-
-export type RenderComponent<T> = T extends { comp: 'custom' }
-  ? T & { renderComponent: Component }
-  : T & { renderComponent?: never }
 
 export type CtlModelValue =
   | { ctl?: true; updateModelValue?: never }
